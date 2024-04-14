@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monster Hunter Portable 3rd Kelbi Horn Reward Tables</title>
+<link rel="icon" type="image/png" href="assets/favicon.ico">
+<link rel="stylesheet" type="text/css" href="assets/layout.css"/>
+<link rel="stylesheet" href="assets/navmenu.css">
+</head>
+<body>
+<style>
+#reward-table{
+	width: 960px;
+	height: 236px;
+	background-repeat: no-repeat;
+	background-image: url("assets/rewards/table.png");
+	position: relative;
+	text-align: center;
+}
+
+.reward{
+	width: 64px;
+	height: 64px;
+	border: 0;
+	background-color: transparent;
+	position: absolute;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.reward-list{
+	display: none;
+	position: absolute;
+	border: 4px solid #220e08;
+	background-color: #4b2d0c;
+	font-family: 'Rodin';
+	color: white;
+	z-index: 2;
+}
+
+.reward-num{
+	position: absolute;
+	width: 40px;
+	font-family: 'Rodin';
+	font-size: 16px;
+	text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+	color: #FFFFFF;
+	background-color: transparent;
+	z-index: 1;
+	border: none;
+}
+
+td{
+	background-color: #361d18;
+	border: 4px solid #1b0f0f;
+	font-family: 'Rodin';
+	font-size: 16px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+td:hover{
+	background-color: #4b2d0c;
+}
+
+.reset{
+	position: absolute;
+	width: 64px;
+	height: 32px;
+	top: 140px;
+	left: 50%;
+	transform: translate(-50%);
+	background-color: #361d18;
+	border: 4px solid #1b0f0f;
+	font-family: 'Rodin';
+	color: #FFFFFF;
+	cursor: pointer;
+}
+@media only screen and (max-width: 600px){
+	.main{
+		overflow-x: scroll;
+	}
+}
+</style>
+<div id="sidenav" class="sidenav"></div>
+<div id="navbar" class="navbar"></div>
+<center>
+<div class="main">
+<div id="reward-table"></div>
+</div>
+<table><tr>
+<td id="results-block" class="hidden"><div class="dropdown">
+	<div style="float: left; position: relative; left: 50%;">
+		<div id="results" style="margin: 10px auto; float: left; position: relative; left: -50%;"></div>
+	</div>
+</td>
+</tr></table>
+
+</center>  
+<a id="footer" class="footer-block"></div>
+
+<script src="scripts/navmenu.js"></script>
+<script src="scripts/kelbi-horn/rewards.js"></script>
+<script src="scripts/kelbi-horn/main.js"></script>
+<script>
+displayNavmenu("kelbi-horn");
+function show_results(){
+	document.getElementById("results-block").style.display = "table-cell";
+}
+
+function hide_results(){
+	document.getElementById("results-block").style.display = "none";
+}
+</script> 
+</body>
+</html>

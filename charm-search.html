@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monster Hunter Portable 3rd Charm Table Search</title>
+<link rel="icon" type="image/png" href="assets/favicon.ico">
+<link rel="stylesheet" type="text/css" href="assets/layout.css"/>
+<link rel="stylesheet" type="text/css" href="assets/navmenu.css"/>
+</head>
+<body>
+<div id="sidenav" class="sidenav"></div>
+<div id="navbar" class="navbar"></div>
+<center>
+<div class="dropdown" id="loading"></br>Loading charm data...</div>
+<div id="content" style="display: none;">
+
+</br><div class="dropdown">Max Results: <input class="dropdown-content" type="number" size="3" maxlength="3" value="100" id="max_results"></div>
+<table>
+<tr>
+
+<td><div class="dropdown">
+	<label class="skillname">Skill 1:</label>
+	<select class="dropdown-content" id="skill_1_name" onchange="clear_skill_1_num()">
+		<option value="Any">Any</option>
+	</select>
+	<select class="dropdown-content" id="skill_1_eq">
+		<option value="l"><</option>
+		<option value="le">≤</option>
+		<option value="e" selected>=</option>
+		<option value="ge">≥</option>
+		<option value="g">></option>
+	</select>
+	<input class="dropdown-content" type="number" size="3" maxlength="3" value="0" id="skill_1_num">
+</div></td>
+
+<td><div class="dropdown">
+	<label class="skillname">Slots</label>
+	<select class="dropdown-content" id="slots">
+		<option value="Any">Any</option>
+	</select>
+</div></td>
+
+</tr><tr>
+
+<td><div class="dropdown">
+	<label class="skillname">Skill 2:</label>
+	<select class="dropdown-content" id="skill_2_name" onchange="clear_skill_2_num()">
+		<option value="Any">Any</option>
+	</select>
+	<select class="dropdown-content" id="skill_2_eq">
+		<option value="l"><</option>
+		<option value="le">≤</option>
+		<option value="e" selected>=</option>
+		<option value="ge">≥</option>
+		<option value="g">></option>
+	</select>
+	<input class="dropdown-content" type="number" size="3" maxlength="3" value="0" id="skill_2_num">
+</div></td>
+
+<td><div class="dropdown">
+	<label class="skillname">Table</label>
+	<select class="dropdown-content" id="table">
+		<option value="Any">Any</option>
+	</select>
+</div></td>
+
+</tr><tr>
+
+<td onclick="search()"><div class="dropdown button">Search</div></td>
+<td onclick="reset_inputs()"><div class="dropdown button">Reset</div></td>
+
+</tr><tr>
+
+<td colspan="2" id="results-block" class="hidden"><div class="dropdown">
+	<div style="float: left; position: relative; left: 50%;">
+		<div id="results" style="margin: 10px auto; float: left; position: relative; left: -50%;"></div>
+	</div>
+</div></td>
+</tr>
+</table>
+</div>    
+</center>
+<a id="footer" class="footer-block"></div>
+<script src="scripts/navmenu.js"></script>
+<script>
+displayNavmenu("charm-search");
+
+function display(){
+	document.getElementById("loading").style.display = "none";
+	document.getElementById("content").style.display = "block";
+}
+
+function show_results(){
+	document.getElementById("results-block").style.display = "table-cell";
+}
+
+function hide_results(){
+	document.getElementById("results-block").style.display = "none";
+}
+
+var script = document.createElement("script");
+script.src = "scripts/charm-search/charms.js";
+script.onload = display;
+document.head.appendChild(script);
+</script>
+<script src="scripts/charm-search/main.js"></script>
+</body>
+</html>

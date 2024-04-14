@@ -1,0 +1,284 @@
+@font-face {
+    font-family: 'Rodin';
+    src: url('../SCE-PS3 Rodin LATIN Regular.otf');
+}    
+
+body{
+	font-family: 'Rodin';
+	background-color: #2A2A2A;
+	min-height: 100vh;
+	margin: 0;
+	text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+	color: #ffffff;
+}
+
+.main{
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin: auto;
+}
+
+.selection{
+	width: 16px;
+	height: 16px;
+	display: flex;
+	background-image: url('spritesheets/PAL_0.png');
+}
+
+.weapon-table{
+	overflow-y: scroll;
+	scrollbar-gutter: stable;
+	max-height: 60vh;
+}
+
+.table-view-2row{
+	max-height: calc(60vh + 78px);
+}
+
+.table-view-3row{
+	max-height: calc(60vh + 36px);
+}
+
+.weapon-table table{
+	border-spacing: 0px;
+	width: 100%;
+}
+
+.weapon-table tr{
+	background-color: #3A3A3A;
+}
+
+.weapon-table tr.active-row{
+    background-color: #346495;
+}
+
+.weapon-table tr.active-row:hover {
+    background-color: #346495;
+}
+
+.weapon-table tr:hover {
+	background-color: #4A4A4A;
+	cursor: pointer;
+}
+
+.weapon-table th, td{
+	text-align: center;
+	padding: 10px 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+.weapon-table th{
+	background-color: #202020;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	border: solid 1px #101010;
+}
+
+.weapon-table td{
+	background-color: transparent;
+	border-radius: 0;
+	border: solid 1px #404040;
+	width: auto;
+}
+
+.sharpness td{
+	border: none;
+}
+
+.sharpness-bar-container{
+    display: flex;
+    margin-bottom: 2px;
+    background-color: #000000;
+    border: 2px solid #101a2e;
+    outline: 1px solid #534b17; 
+    position: relative;
+    width: 89px;
+}
+
+.sharpness-bar {
+    height: 5px;
+}
+
+.sharpness-1{
+	text-shadow: none;
+	color: #25ff25;
+	font-size: 11px;
+	width: 11px;
+	height: 11px;
+	position: relative;
+	margin-top: 4px;
+	font-weight: normal;
+	margin-right: 2px;
+}
+
+.filters-table{
+	table-layout: fixed;
+	border-spacing: 0;
+	width: 100%;
+	background-color: #3A3A3A;
+	max-height: 20vh;
+}
+
+.filters-table th, td{
+	text-align: center;
+	vertical-align: center;
+	font-size: 12px;
+}
+
+.filters-table th{
+	background-color: #202020;
+	padding: 10px 1px;
+}
+
+.filters-table td{
+	padding: 10px 2px;
+	border: solid 1px #404040;
+	cursor: pointer;
+	width: 32px;
+}
+
+.filters td:hover{
+	background-color: #4A4A4A;
+}
+
+.filters td.active-filter{
+    background-color: #346495;
+}
+
+.materials-table{
+	overflow-y: auto;
+	scrollbar-gutter: stable;
+	position: relative;
+	bottom: 0;
+	z-index: 4;
+	width: 100%:
+}
+
+.materials-table table{
+	border-spacing: 0px;
+	width: 100%;
+	border: 1px solid #c0c0c0;
+}
+
+.materials-table tr{
+	background-color: #3A3A3A;
+}
+
+.materials-table tr.active-row{
+    background-color: #346495;
+}
+
+.materials-table tr.active-row:hover {
+    background-color: #346495;
+}
+
+.materials-table th, td{
+	text-align: center;
+	padding: 2px;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 12px;
+	width: 50%;
+}
+
+.materials-table th{
+	background-color: #202020;
+	padding: 5px 10px;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+}
+
+.materials-table td{
+	background-color: transparent;
+	border-radius: 0;
+	vertical-align: top;
+}
+
+.materials-table th.close{
+	height: 32px;
+	text-size: 32px;
+	cursor: pointer;
+}
+
+.materials-info{
+	width: 100%:
+}
+
+.info-table th{
+	background-color: #707070;
+}
+
+.info-table tr{
+	background-color: #3A3A3A;
+}
+
+.info-table tr:hover {
+	background-color: #4A4A4A;
+	cursor: pointer;
+}
+
+.info-block{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: auto;
+	z-index: 999;
+	cursor: default;
+	overflow-y: auto;
+	scrollbar-gutter: stable;
+	max-height: 100%;
+}
+
+.mat-box th, .mat-box td{
+	cursor: default;
+	vertical-align: bottom;
+	height: 16px;
+	text-align: center;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 998;
+	display: none;
+}
+
+@media only screen and (max-width: 600px){
+	.main{
+		width: 100%;
+		left: 0;	
+	}
+
+	.weapon-table{
+		max-height: calc(50vh - 32px);
+	}
+	
+	.table-view-2row{
+		max-height: calc(50vh + 46px);
+	}
+
+	.table-view-3row{
+		max-height: calc(50vh + 10px);
+	}
+
+	.info-block{
+		top: unset;
+		left: unset;
+		transform: unset;
+		width: 100%;
+		bottom: 0;
+	}
+	.sharpness-1{
+		margin-top: 11px;
+	}
+}

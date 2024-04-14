@@ -1,0 +1,131 @@
+.navbar{
+	font-family: 'Rodin';
+	height: 64px;
+	padding-left: 24px;
+	position: relative;
+	display: flex;
+	-moz-box-align: center;
+	align-items: center;
+	color: white;
+	background-color: #2A2A2A;
+}
+
+.navbar button{
+	display: inline-flex;
+	-moz-box-align: center;
+	align-items: center;
+	-moz-box-pack: center;
+	justify-content: center;
+	position: relative;
+	box-sizing: border-box;
+	background-color: transparent;
+	outline: 0px;
+	border: 0px;
+	margin: 0px 8px 0px -12px;
+	cursor: pointer;
+	vertical-align: middle;
+	appearance: none;
+	text-decoration: none;
+	text-align: center;
+	flex: 0 0 auto;
+	border-radius: 50%;
+	overflow: visible;
+	transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	color: white;
+	padding: 12px;
+	font-size: 1.75rem;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.navbar button:hover{
+	background-color: #3A3A3A;
+}
+
+.navbar span{
+	margin: 0px;
+	font-size: 1.0625rem;
+	font-weight: 500;
+	line-height: 1.167;
+	-moz-box-flex: 1;
+	flex-grow: 1;
+	text-decoration: none;
+	color: white;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.sidenav{
+	height: 100%;
+	width: 0;
+	max-width: 400px;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	background-color: #202020;
+	border-bottom: 4px solid #202020;
+	overflow: hidden;
+	transition: 400ms;
+	padding-top: 60px;
+	white-space: nowrap;
+}
+
+.sidenav a{
+	margin-left: 25px;
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 18px;
+	color: white;
+	display: block;
+	transition: 200ms;
+}
+
+.sidenav span{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+	text-shadow: none;
+	cursor: pointer;
+}
+
+.navbar-show{
+	display: block;
+}
+
+.logo{
+	width: 300px;
+	margin-left: 50px;
+	padding-bottom: 25px;
+}
+
+.footer-block{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.footer{
+	padding: 10px 10px;
+}
+
+.footer a{
+	color: #6A6A6A;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+@media only screen and (max-width: 600px){
+	.logo{
+		width: 75vw;
+	}
+	.sidenav{
+		max-width: 100%;
+	}
+	.sidenav span{
+		font-size: 32px;
+		top: 20px;
+	}
+}

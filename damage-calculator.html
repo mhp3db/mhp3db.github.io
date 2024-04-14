@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monster Hunter Portable 3rd Damage Calculator</title>
+<link rel="icon" type="image/png" href="assets/favicon.ico">
+<link rel="stylesheet" type="text/css" href="assets/layout.css"/>
+<link rel="stylesheet" type="text/css" href="assets/navmenu.css"/>
+</head>
+<body>
+<div id="sidenav" class="sidenav"></div>
+<div id="navbar" class="navbar"></div>
+<center>
+<table>
+<tr>
+
+<td><div class = "dropdown">
+	<label class="skillname">Base Attack: </label>
+	<input onChange="calculate()" class = "dropdown-content" type="number" id="base_attack_0" min="0" size="5" value="200">
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Base Affinity: </label>
+	<input onChange="calculate()" class = "dropdown-content" type="number" id="base_affinity_0" min="-100" max="100" size="5" value="0">
+	<label>%</label>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Sharpness: </label>
+	<select onChange="calculate()" class = "dropdown-content" id = "sharpness_0">
+		<option value = "1.00" selected>---</option>
+		<option value = "0.50">Red</option>
+		<option value = "0.75">Orange</option>
+		<option value = "1.00">Yellow</option>
+		<option value = "1.05">Green</option>
+		<option value = "1.20">Blue</option>
+		<option value = "1.32">White</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Element: </label>
+	<input onChange="calculate()" class = "dropdown-content" type="number" id="element_0" min="0" size="5" value="0">
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Powercharm</label>
+	<input onChange="calculate()" type="checkbox" class="checkbox-content" id="powercharm_0" checked>
+	</br>
+	<label class="skillname">Powertalon</label>
+	<input onChange="calculate()" type="checkbox" class="checkbox-content" id="powertalon_0" checked>
+</div></td>
+
+</tr><tr>
+
+<td><div class = "dropdown">
+	<label class="skillname">Attack Up</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "attack_up_0">
+		<option value = "0" selected>---</option>
+		<option value = "10">(S)</option>
+		<option value = "15">(M)</option>
+		<option value = "20">(L)</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Critical Eye</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "critical_eye_0">
+		<option value = "0" selected>---</option>
+		<option value = "10">+1</option>
+		<option value = "20">+2</option>
+		<option value = "30">+3</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Weakness Exploit</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "weakness_exploit_0">
+		<option value = "0" selected>---</option>
+		<option value = "50">✓</option>
+		<option value = "25">½</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Element Atk +1</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "element_atk_up_0">
+		<option value = "0" selected>---</option>
+		<option value = "3">✓</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">[Element] Atk </label>
+	<select onChange="calculate()" class = "dropdown-content" id = "element_attack_0">
+		<option value = "0" selected>---</option>
+		<option value = "3">+1</option>
+		<option value = "6">+2</option>
+	</select>
+</div></td>
+
+
+
+</tr><tr>
+
+<td><div class = "dropdown">
+	<label class="skillname">Normal/Rapid Up</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "normal_rapid_up_0">
+		<option value = "1.00" selected>---</option>
+		<option value = "1.10">✓</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Pierce/Pierce Up</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "pierce_pierce_up_0">
+		<option value = "1.00" selected>---</option>
+		<option value = "1.10">✓</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Pellet/Spread Up</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "pellet_spread_up_0">
+		<option value = "1.00" selected>---</option>
+		<option value = "1.20">✓</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Adrenaline</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "adrenaline_0">
+		<option value = "1.00" selected>---</option>
+		<option value = "1.30">+2</option>
+	</select>
+</div></td>
+
+</tr><tr>
+
+<td><div class = "dropdown">
+	<label class="skillname">Felyne Atk Up</label>
+	<select onChange="calculate()" class = "dropdown-content" id = "felyne_atk_up_0">
+		<option value = "0" selected>---</option>
+		<option value = "3">(Sm)</option>
+		<option value = "5">(Med)</option>
+		<option value = "7">(Lg)</option>
+	</select>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Felyne Booster<label>
+	<select onChange="calculate()" class = "dropdown-content" id = "felyne_booster_0">
+		<option value = "0" selected>---</option>
+		<option value = "3">✓</option>
+	</select>
+</div></td>
+
+</tr><tr>
+
+<tr><td class="empty"></td></tr>
+
+<td><div class = "dropdown">
+	<label class="skillname">Effective Raw: </label>
+	<input class = "dropdown-content textbox" type="number" id="effective_raw_0" min="0" size="4" value="" readonly>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Total Affinity: </label>
+	<input class = "dropdown-content textbox" type="number" id="total_affinity_0" min="-100" max="100" size="5" value="0" readonly>
+	<label>%</label>
+</div></td>
+
+<td><div class = "dropdown">
+	<label class="skillname">Eff. Element: </label>
+	<input class = "dropdown-content textbox" type="number" id="effective_element_0" min="0" size="4" value="" readonly>
+</div></td>
+
+<td class="empty"></td>
+
+<td onClick="window.location.reload()"><div class = "dropdown button">Reset</div></td>
+
+
+</tr>
+</table>
+</center>
+<a id="footer" class="footer-block"></div>
+<script src="scripts/navmenu.js"></script>
+<script>displayNavmenu("damage-calculator");</script>
+<script src="scripts/damage-calculator/main.js"></script>
+</body>
+</html>

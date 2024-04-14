@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monster Hunter Portable 3rd Weapon Database</title>
+<link rel="icon" type="image/png" href="assets/favicon.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/database/style.css">
+<link rel="stylesheet" href="assets/navmenu.css">
+</head>
+<body>
+<div id="sidenav" class="sidenav"></div>
+<div id="navbar" class="navbar"></div>
+<div id="overlay" class="overlay" onClick="hideInfo()"></div>
+<div id="root">
+	<div class="main">
+		<div class="filters">
+		<table id="filters-table" class="filters-table">
+		<thead>
+			<tr><th colspan="6">Filters</th></tr>
+		</thead>
+			<tr>
+				<td colspan="6" style="background-color: transparent; font-size: 12px; height: 100%; width: auto; cursor: default; padding: 0 0;" id="selection"><table class="filters-table"><tr>
+				<td onClick="changeWeapon('GS')"><center><span class="selection" style="background-position: -80px -80px;"></span></center></td>
+				<td onClick="changeWeapon('LS')"><center><span class="selection" style="background-position: -96px -80px;"></span></center></td>
+				<td onClick="changeWeapon('SnS')"><center><span class="selection" style="background-position: -112px -80px;"></span></center></td>
+				<td onClick="changeWeapon('DB')"><center><span class="selection" style="background-position: -128px -80px;"></span></center></td>
+				<td onClick="changeWeapon('Hammer')"><center><span class="selection" style="background-position: -144px -80px;"></span></center></td>
+				<td onClick="changeWeapon('HH')"><center><span class="selection" style="background-position: 0px -96px;"></span></center></td>
+				<td onClick="changeWeapon('Lance')"><center><span class="selection" style="background-position: -16px -96px;"></span></center></td>
+				<td onClick="changeWeapon('GL')"><center><span class="selection" style="background-position: -32px -96px;"></span></center></td>
+				<td onClick="changeWeapon('SA')"><center><span class="selection" style="background-position: -96px -96px;"></span></center></td>
+				</tr></table></td>
+			</tr>
+		<tbody id="filters">
+			<tr>
+				<td rowspan="4" onClick="filterTable('Final')" style="color: #c0c0c0; font-size: 12px;">Final</br>Form</td>
+				
+				<td onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">None</td>
+				<td onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Fire</td>
+				<td onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Water</td>
+				<td onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Thunder</td>
+				
+				<td rowspan="4" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
+				
+			</tr><tr>
+				<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
+				<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
+				<td onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Poison</td>
+				<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Paralyze</td>				
+			</tr>
+
+		</tbody>
+		</table>
+		</div>
+		<div id="weapon_table" class="weapon-table">
+			<table id="data-table">
+			<thead>
+			    <tr>
+					<th onClick="sortTable(0)"># <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(1)">Name <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(2)">Rarity <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(3)">Attack <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(4)">Elem/Sts <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(5)">Affinity <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(6)">Slots <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(7)">Defense <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(8)" id="unique-header" style="display: none">-</th>
+					<th onClick="sortTable(9)">Sharpness <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(10)">Crafting Price <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(11)">Upgrade Price <i class="fa fa-fw fa-sort"></i></th>
+			    </tr>
+			</thead>
+			<tbody id="weapon_info"></tbody>
+			</table>
+		</div>
+		
+		<div class="info-block">
+		<div id="materials-table" class="materials-table" style="display: none">
+			<table id="materials_info">
+				<tr>
+					<th colspan="2" id="close-info" class ="close" onClick="hideInfo()" style="border-bottom: 1px solid #C0C0C0">Info <span style="font-size: 20px">&times;</span></th>
+				</tr>
+				<tr>
+					<th colspan="2" id="weapon_title"></th>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<span class="fa fa-caret-left" style="position: relative; float: left; left: 10px; top: 90px; font-size: 50px; color: #4a4a4a; text-shadow: none"></span>
+						<span class="fa fa-caret-right" style="position: relative; float: right; right: 10px; top: 90px; font-size: 50px; color: #4a4a4a; text-shadow: none"></span>
+						<center><span id="weapon_preview"></span></center>
+						
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="border-bottom: 1px solid #c0c0c0">
+						<input type="checkbox" id="play_animation" style="display: none">
+						<label for="play_animation" style="width: 24px; height: 24px; display: inline-block; cursor: pointer;" id="play_pause" class="fa fa-play"></label>
+					</td>
+				</tr>
+				<tr>
+					<th>Crafting Materials</th>
+					<th>Upgrade Materials</th>
+				</tr>
+				<tr>
+					<td style="border-bottom: 1px solid #c0c0c0"><div id="crafting_materials" class="info-table"></div></td>
+					
+					<td id="upgrade_materials" class="info-table" style="border-bottom: 1px solid #c0c0c0"></td>
+				</tr>
+				<tr>
+					<th colspan="2">Weapon Tree</th>
+				</tr>
+				<tr>
+					<td colspan="2" id="weapon_tree" class="info-table"></td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</div>
+	<a id="footer" class="footer-block"></div>
+</div>
+<script src="scripts/navmenu.js"></script>
+<script src="scripts/database/preview_data.js"></script>
+<script src="scripts/database/weapon_preview.js"></script>
+<script src="scripts/database/sprite_data.js"></script>
+<script src="scripts/database/songlist.js"></script>
+<script src="scripts/database/DB_data.js"></script>
+<script src="scripts/database/DB_scripts.js"></script>
+<script src="scripts/database/GL_data.js"></script>
+<script src="scripts/database/GL_scripts.js"></script>
+<script src="scripts/database/GS_data.js"></script>
+<script src="scripts/database/GS_scripts.js"></script>
+<script src="scripts/database/Hammer_data.js"></script>
+<script src="scripts/database/Hammer_scripts.js"></script>
+<script src="scripts/database/HH_data.js"></script>
+<script src="scripts/database/HH_scripts.js"></script>
+<script src="scripts/database/Lance_data.js"></script>
+<script src="scripts/database/Lance_scripts.js"></script>
+<script src="scripts/database/LS_data.js"></script>
+<script src="scripts/database/LS_scripts.js"></script>
+<script src="scripts/database/SA_data.js"></script>
+<script src="scripts/database/SA_scripts.js"></script>
+<script src="scripts/database/SnS_data.js"></script>
+<script src="scripts/database/SnS_scripts.js"></script>
+<script src="scripts/database/database.js"></script>
+</body>
+</html>
+
+
