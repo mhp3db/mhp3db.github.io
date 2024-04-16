@@ -234,6 +234,19 @@ const data = [
         "Reward 10": "---"
     },
     {
+        "Table": "3",
+        "Reward 1": "Nulberry x3",
+        "Reward 2": "Warm Pelt x1",
+        "Reward 3": "Warm Pelt x2",
+        "Reward 4": "Warm Pelt x2",
+        "Reward 5": "---",
+        "Reward 6": "---",
+        "Reward 7": "---",
+        "Reward 8": "---",
+        "Reward 9": "---",
+        "Reward 10": "---"
+    },
+    {
         "Table": "4",
         "Reward 1": "Raw Meat x1",
         "Reward 2": "Field Horn x1",
