@@ -29,9 +29,23 @@
 	display: inline-block;
 }
 
-.reward-list{
+.reward:hover{
+	outline: 8px solid #0bbd00;
+	border-radius: 8px;
+}
+
+.list-visible{
+	display: flex;
+}
+
+.list-hidden{
 	display: none;
+}
+
+.reward-list{
 	position: absolute;
+	margin-left: -12px;
+	margin-top: 60px;
 	border: 4px solid #220e08;
 	background-color: #4b2d0c;
 	font-family: 'Rodin';
@@ -42,6 +56,8 @@
 .reward-num{
 	position: absolute;
 	width: 40px;
+	margin-left: 44px;
+	margin-top: 48px;
 	font-family: 'Rodin';
 	font-size: 16px;
 	text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
@@ -64,39 +80,119 @@ td:hover{
 	background-color: #4b2d0c;
 }
 
+.row0{top: 48px;}
+.row1{top: 128px;}
+.col0{left: 84px;}
+.col1{left: 188px;}
+.col2{left: 292px;}
+.col3{left: 396px;}
+.col4{left: 500px;}
+.col5{left: 604px;}
+.col6{left: 708px;}
+.col7{left: 812px;}
+
 .reset{
 	position: absolute;
-	width: 64px;
-	height: 32px;
-	top: 140px;
-	left: 50%;
-	transform: translate(-50%);
+	width: 80px;
+	height: 76px;
+	top: 120px;
+	left: 804px;
 	background-color: #361d18;
 	border: 4px solid #1b0f0f;
+	border-radius: 16px;
 	font-family: 'Rodin';
 	color: #FFFFFF;
 	cursor: pointer;
 }
-@media only screen and (max-width: 600px){
-	.main{
-		overflow-x: scroll;
-	}
+
+.reset:hover{
+	border: 8px solid #0bbd00;
+	border-radius: 16px;
 }
+
+@media only screen and (max-width: 600px) {
+	#reward-table{
+		width: 100vw;
+		height: 24.583vw;
+		background-size: 100vw;
+	}
+	
+	.reward{
+		width: 6.67vw;
+		height: 6.67vw;
+	}
+	
+	.reward:hover{
+		outline: 0.833vw solid #0bbd00;
+		border-radius: 0.833vwpx;
+	}
+	
+	.list-hidden{
+		display: block;
+	}
+	
+	.reward-list{
+		display: block;
+		width: 6.67vw;
+		height: 6.67vw;
+		margin-left: 0;
+		margin-top: 0;
+		border: 0.417vw solid #220e08;
+		font-size: 1.667vw;
+		opacity: 0;
+	}
+	
+	.reward-num{
+		font-size: 1.667vw;
+		text-shadow: none;
+		width: 4.167vw;
+		margin-left: 4.583vw;
+		margin-top: 5vw;
+	}
+	
+	.reset{
+		width: 8.333vw;
+		height: 7.917vw;
+		top: 12.5vw;
+		left: 83.75vw;
+		transform: unset;
+		border: 0.417vw solid #1b0f0f;
+		border-radius: 5px;
+		font-size: 1.5vw;
+	}
+	
+	.reset:hover{
+		border: 0.417vw solid #1b0f0f;
+		border-radius: 5px;
+	}
+	
+	.row0{top: 5vw;}
+	.row1{top: 13.333vw;}
+	.col0{left: 8.75vw;}
+	.col1{left: 19.583vw;}
+	.col2{left: 30.417vw;}
+	.col3{left: 41.25vw;}
+	.col4{left: 52.083vw;}
+	.col5{left: 62.917vw;}
+	.col6{left: 73.75vw;}
+	.col7{left: 84.583vw;}
+}
+
 </style>
 <div id="sidenav" class="sidenav"></div>
 <div id="navbar" class="navbar"></div>
 <center>
-<div class="main">
-<div id="reward-table"></div>
-</div>
-<table><tr>
-<td id="results-block" class="hidden"><div class="dropdown">
-	<div style="float: left; position: relative; left: 50%;">
-		<div id="results" style="margin: 10px auto; float: left; position: relative; left: -50%;"></div>
-	</div>
-</td>
-</tr></table>
+<div id="reward-table">
 
+
+</div>
+<div id="results-block" style="display: none">
+	<table><tr><td>
+		<div class="dropdown">
+			<div id="results" style="margin: 10px auto;"></div>
+		</div>
+	</td></tr></table>
+</div>
 </center>  
 <a id="footer" class="footer-block"></div>
 

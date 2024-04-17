@@ -66,12 +66,22 @@ function search(){
 
 function toggle_list(id){
 	var reward = document.getElementById(id);
-	if(reward.style.display === "none") reward.style.display = "block";
-	else reward.style.display = "none";
+	if(reward.classList.contains("list-hidden")){
+		reward.classList.remove("list-hidden");
+		reward.classList.add("list-visible");
+	}
+	else{
+		reward.classList.remove("list-visible");
+		reward.classList.add("list-hidden");
+	}
 }
 
 function hide_list(id){
-	document.getElementById(id).style.display = "none";
+	var reward = document.getElementById(id);
+	if(!reward.classList.contains("list-hidden")){
+		reward.classList.remove("list-visible");
+		reward.classList.add("list-hidden");
+	}
 }
 
 document.addEventListener("click", function (event) {
@@ -80,16 +90,16 @@ document.addEventListener("click", function (event) {
         var dropdown = dropdowns[i];
         var image = document.querySelector('[data-dropdown="' + dropdown.id + '"]');
         if (event.target !== dropdown && !dropdown.contains(event.target) && event.target !== image) {
-            dropdown.style.display = "none";
+		  if(!dropdown.classList.contains("list-hidden")){
+			dropdown.classList.remove("list-visible");
+			dropdown.classList.add("list-hidden");
+		  }
         }
     }
 });
 
 function update(){
-	var x = 0, y = 0;
 	for(var i = 0; i < 10; i++){
-		x = 104 * ((i < 8) ? i : (i-8)) + 84;
-		y = (i < 8) ? 48 : 128;
 		var icon = document.createElement("img");
 		icon.classList.add("reward");
 		icon.setAttribute("data-dropdown", "slot_" + i);
@@ -97,19 +107,15 @@ function update(){
 			var id = this.getAttribute("data-dropdown");
 			toggle_list(id);
 		};
-		icon.style.left = x + "px";
-		icon.style.top = y + "px";
 		icon.id = "icon_" + i;
 		icon.src = "assets/rewards/Any.png";
-		document.getElementById("reward-table").appendChild(icon);
 		
 		var num = document.createElement("div");
 		num.classList.add("reward-num");
-		num.style.left = (x + 44) + "px";
-		num.style.top = (y + 48) + "px";
 		num.textContent = "0";
 		num.id = "reward_num_" + i;
-		document.getElementById("reward-table").appendChild(num);
+		
+		
 		
 		var list = document.createElement("select");
 		list.id = "slot_" + i;
@@ -133,15 +139,54 @@ function update(){
 			hide_list(id);
 			search();
 		};
-		list.style.left = (x - 12) + "px";
-		list.style.top = (y + 60) + "px";
+		
+		if(i < 8){
+			icon.classList.add("row0");
+			icon.classList.add("col"+i);
+			num.classList.add("row0");
+			num.classList.add("col"+i);
+			list.classList.add("row0");
+			list.classList.add("col"+i);
+			list.classList.add("list-hidden");
+		}
+		else{
+			icon.classList.add("row1");
+			icon.classList.add("col"+(i-8));
+			num.classList.add("row1");
+			num.classList.add("col"+(i-8));
+			list.classList.add("row1");
+			list.classList.add("col"+(i-8));
+			list.classList.add("list-hidden");
+		}
+		document.getElementById("reward-table").appendChild(icon);
+		document.getElementById("reward-table").appendChild(num);
 		document.getElementById("reward-table").appendChild(list);	
 	}
 	var re = document.createElement("button");
 	re.textContent = "Reset";
 	re.classList.add("reset");
-	re.onclick = function(){window.location.reload();}
+	re.onclick = function(){reset();}
 	document.getElementById("reward-table").appendChild(re);
+}
+
+function reset(){
+    for(var i = 0; i < 10; i++){
+        var dropdown = document.getElementById("slot_" + i);
+        dropdown.selectedIndex = 0;
+        document.getElementById("icon_" + i).src = "assets/rewards/Any.png";
+        document.getElementById("reward_num_" + i).textContent = "0";
+    }
+    document.getElementById("results").innerHTML = "";
+    var dropdowns = document.querySelectorAll(".reward-list");
+    for (var i = 0; i < dropdowns.length; i++) {
+        var dropdown = dropdowns[i];
+        if(dropdown.classList.contains("list-visible")) {
+            dropdown.classList.remove("list-visible");
+            dropdown.classList.add("list-hidden");
+        }
+    }
+
+    hide_results();
 }
 
 window.onload=function(){
