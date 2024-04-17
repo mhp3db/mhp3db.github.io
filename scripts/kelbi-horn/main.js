@@ -57,7 +57,9 @@ function search(){
 		for(var i = 0; i < result.length; i++) if(!trimmed_results.includes(result[i]["Table"])) trimmed_results.push(result[i]["Table"]);
 		for(var i = 0; i < trimmed_results.length; i++){
 			var res = "Table " + String(trimmed_results[i]);
-			document.getElementById("results").innerHTML+=res+"<br>";
+			var txt = document.getElementById("results");
+			txt.innerHTML += res;
+			if(i < trimmed_results.length-1) txt.innerHTML += "<div style='height: 10px'></div>"
 		}
 	}
 	
