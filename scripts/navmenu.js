@@ -22,12 +22,16 @@ function displayNavmenu(page){
 		<img class="logo" src="assets/logo.png">
 	`;
 	
+	sidenav.innerHTML += `<a href="index.html">Home</a>`;
 	sidenav.innerHTML += `<a href="database.html">Weapon Database</a>`;
 	sidenav.innerHTML += `<a href="damage-calculator.html">Damage Calculator</a>`;
 	sidenav.innerHTML += `<a href="charm-search.html">Charm Table Search</a>`;
 	sidenav.innerHTML += `<a href="kelbi-horn.html">Kelbi Horn Reward Tables</a>`;
 	
 	switch(page){
+		case "index":
+			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Home</span>`;
+			break;
 		case "database":
 			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Weapon Database</span>`;
 			break;

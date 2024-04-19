@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weapon Database - MHP3rd Database</title>
+<link rel="icon" type="image/png" sizes="24x24" href="assets/favicon-24.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-48.png">
+<link rel="stylesheet" type="text/css" href="assets/layout.css"/>
+<link rel="stylesheet" href="assets/navmenu.css">
+</head>
+<body>
+<style>
+@font-face {
+    font-family: 'VTC';
+    src: url('assets/VTCGoblinHandBold.ttf');
+}    
+
+.issues a{
+	color: #c69c00;
+}
+
+.issues a:visited{
+	color: #c69c00;
+}
+
+.header{
+	font-size: 24px;
+	width: 800px;
+}
+
+.pop {
+	color: #2e5c51;
+	text-shadow: 
+		3px 0 0 #c69c00, 
+		-3px 0 0 #c69c00, 
+		0 3px 0 #c69c00, 
+		0 -3px 0 #c69c00, 
+		2px 2px #c69c00, 
+		-2px -1px 0 #c69c00, 
+		1px -1px 0 #c69c00, 
+		-1px 1px 0 #c69c00,
+		0 0 10px #41fef9,
+		0 0 10px #41fef9,
+		0 0 10px #41fef9,
+		0 0 10px #41fef9;
+	font-family: 'VTC';
+	font-size: 48px;
+	animation: pop 0.58s infinite;
+	-webkit-animation: pop 2.58s infinite;
+	position: absolute;
+	top: 340px;
+	left: 0;
+	right: 0;
+}
+
+@keyframes pop {
+    from {
+        transform:scale(0.95)
+    }
+    50% {
+        transform:scale(1)
+    }
+    to {
+        transform:scale(0.95)
+    }
+}
+@-webkit-keyframes pop {
+    from {
+        -webkit-transform:scale(0.95)
+    }
+    50% {
+        -webkit-transform:scale(1)
+    }
+    to {
+        -webkit-transform:scale(0.95)
+    }
+}
+
+@media only screen and (max-width: 600px){
+	.header{
+		font-size: 4vw;
+		width: 90vw;
+	}
+	p{
+		font-size: 3vw;
+		padding: 0 10vw;
+	}
+	img{
+		width: 100vw;
+	}
+	.pop{
+		top: 75vw;
+		right: 0;
+		font-size: 8vw;
+		text-shadow: 
+			1px 0 0 #c69c00, 
+			-1px 0 0 #c69c00, 
+			0 1px 0 #c69c00, 
+			0 -1px 0 #c69c00, 
+			1px 1px #c69c00, 
+			-1px -1px 0 #c69c00, 
+			1px -1px 0 #c69c00, 
+			-1px 1px 0 #c69c00,
+			0 0 5px #41fef9,
+			0 0 5px #41fef9,
+			0 0 5px #41fef9,
+			0 0 5px #41fef9;
+
+	}
+}
+</style>
+<div id="sidenav" class="sidenav"></div>
+<div id="navbar" class="navbar"></div>
+
+<center>
+<img src="assets/logo.png" width="512px"></img>
+<div class="pop">Database</div>
+<div class="header">MHP3rd Database is a site dedicated to providing information and tools in English for Monster Hunter Portable 3rd.</div>
+<p class="issues">If you spot any errors or inaccuracies please submit an issue <a href="https://github.com/mhp3db/mhp3db.github.io/issues">here</a>.
+</center>
+	
+<a id="footer" class="footer-block"></div>
+<script src="scripts/navmenu.js"></script>
+<script>
+displayNavmenu("index");
+</script>
+</body>
+</html>
+
+
