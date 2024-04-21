@@ -3,6 +3,10 @@
     src: url('../SCE-PS3 Rodin LATIN Regular.otf');
 }    
 
+html, body{
+	overscroll-behavior: none;
+}
+
 body{
 	font-family: 'Rodin';
 	background-color: #2A2A2A;
