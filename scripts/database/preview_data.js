@@ -1459,4 +1459,156 @@ var preview_data = {
 			"Pirate J Axe"
 		]
 	},
+	"LBG": {
+		
+	},
+	"HBG": {
+		
+	},
+	"Bow": {
+		"0": [
+			"Old Yukumo Bow",
+			"Yukumo Bow",
+			"Yukumo Bow+"
+		],
+		"1": [
+			"Wroggi Revolver I",
+			"Wroggi Revolver II",
+			"Wroggi Revolver III",
+			"Dirty Revolver",
+		],
+		"2": [
+			"Peckish Peco",
+			"Famished Peco",
+			"Insatiable Peco",
+			"Heartbreaker",
+		],
+		"3": [
+			"Sponge Gear I",
+			"Sponge Gear II",
+			"Sponge Gear III"
+		],
+		"4": [
+			"Amethyst Gear I",
+			"Amethyst Gear II",
+			"Amir al Bahr"
+		],
+		"5": [
+			"Arko Nulo",
+			"Arko Unu"
+		],
+		"6": [
+			"Arko Nulo（R）",
+			"Arko Unu（R）",
+			"Arko Du（R）"
+		],
+		"7": [
+			"Arko Nulo（W）",
+			"Arko Unu（W）",
+			"Arko Du（W）"
+		],
+		"8": [
+			"Arko Nulo（Y）",
+			"Arko Unu（Y）",
+			"Arko Du（Y）"
+		],
+		"9": [
+			"Hunter's Bow I",
+			"Hunter's Bow II",
+			"Hunter's Bow III"
+		],
+		"10": [
+			"Queen Blaster I",
+			"Queen Blaster II",
+			"Queen Blaster III"
+		],
+		"11": [
+			"Selene Moonbroken"
+		],
+		"12": [
+			"Type 64 Multibow I",
+			"Type 64 Multibow II",
+			"Type 64 Multibow III",
+			"Scorpion Zinger",
+		],
+		"13": [
+			"Hunter's Stoutbow I",
+			"Hunter's Stoutbow II"
+		],
+		"14": [
+			"Bamboo Taketori",
+			"Bamboo Okina",
+			"Bamboo Kaguya"
+		],
+		"15": [
+			"Arca Raptora",
+			"Arca Chaotica",
+			"Arca Insantia"
+		],
+		"16": [
+			"Amnis"
+		],
+		"17": [
+			"True Yukumo Bow",
+			"Army Vanquisher Bow"
+		],
+		"18": [
+			"Usuper's Rumble I",
+			"Usuper's Rumble II",
+			"Despot's Earlybolt"
+		],
+		"19": [
+			"Ice Crest I",
+			"Ice Crest II",
+			"Edelweiss"
+		],
+		"20": [
+			"Lithe Saberbow",
+			"Fallenfriede"
+		],
+		"21": [
+			"Brazencord I",
+			"Brazencord II",
+			"Brazencord III",
+			"Gigacles",
+		],
+		"22": [
+			"Hidden Bow I",
+			"Hidden Bow II",
+			"Night Flight"
+		],
+		"23": [
+			"Virnar Bow",
+			"Midnight Farflight"
+		],
+		"24": [
+			"Tiger Arrow",
+			"Tigrex Whisker"
+		],
+		"25": [
+			"Diablos Hornbow I",
+			"Diablos Hornbow II"
+		],
+		"26": [
+			"Cera Coilbender"
+		],
+		"27": [
+			"Kelbi Stingshot",
+			"Kelbi Strongshot"
+		],
+		"28": [
+			"Worldseer’s Bow",
+			"Worldseer's Proof",
+			"Worldseer's Bounty"
+		],
+		"29": [
+			"Akantor Wrathmaker"
+		],
+		"30": [
+			"Ukanlos Frostbreath"
+		],
+		"31": [
+			"Evil Night Tempest"
+		]
+	}
 }

@@ -1,19 +1,25 @@
 var WEAPON_TYPE = "GS";
 var data = null;
-var sorting = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; 
+var sorting = []; 
 var filters = [[], []];
 var fully_upgraded = 0;
 var weapon_info = document.getElementById("weapon_info");
 var materials_info = document.getElementById("materials_info");
 var rows_list = [];
 var active_row = null;
+var search_filter = "";
 
 function changeWeapon(type){
 	filterTable("Clear");
+	var search_row = document.getElementById("search_row");
+	if(search_row != null) search_row.parentNode.removeChild(search_row);
 	//----------------------------------------------------------------------------------------------------
 	//-----WEAPON TYPE------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------
 	switch(WEAPON_TYPE){
+		case "Bow":
+			Bow_terminate();
+			break;
 		case "DB":
 			DB_terminate();
 			break;
@@ -88,95 +94,127 @@ function getSprite(material){
 	return "";
 }
 
-function showMoreInfo(event){
-    var id = event.currentTarget.id;
-    for(var i = 0; i < rows_list.length; i++) if(rows_list[i].id == id) active_row = rows_list[i];
-    var rows = weapon_info.getElementsByTagName("tr");
-    for(var i = 0; i < rows.length; i++) {
-        rows[i].classList.remove("active-row");
-    }
-    active_row.classList.add("active-row");
-    active_row.scrollIntoView({block: "center", behavior: "smooth"});
-    var weapon = data[active_row.id];
-    var crafting_materials = weapon["Craft"];
-    var upgrade_materials = weapon["Upgrade"];
-    
-    var table = `<div class="mat-box"><table><thead><tr><th></th><th>Material</th><th>Qty</th></tr></thead><tbody>`;
-    var table_0 = document.createElement("table");
-    var table_1 = table;
-    var table_2 = table;
-    
-    for(var material in crafting_materials){
-	  if(material != "z"){
-		  var sprite = getSprite(material);
-		  table_1 += `
-			<tr>
-				<td>${sprite}</td>
-				<td style="text-align: left;">${material}</td>
-				<td>${crafting_materials[material]}</td>
-			</tr>
-		 `; 
-	  }		  
-    } 
-    for(var material in upgrade_materials){
-	    if(material != "z"){
-		  var sprite = getSprite(material);
-		  table_2 += `
-			<tr>
-				<td>${sprite}</td>
-				<td style="text-align: left;">${material}</td>
-				<td>${upgrade_materials[material]}</td>
-			</tr>
-		 `; 
-	  }		
-    } 
-    
-    var tree = getWeaponTree(active_row.id).reverse();
-    var weapon_tree = document.getElementById("weapon_tree");
-    while(weapon_tree.firstChild) weapon_tree.removeChild(weapon_tree.firstChild);
-    for(var i = 0; i < tree.length; i++){	
-	    var row_0 = table_0.insertRow();
-	    row_0.id = tree[i];
-	    row_0.addEventListener("click", function (event) {
+function showMoreInfo(event) {
+	var id = event.currentTarget.id;
+	for (var i = 0; i < rows_list.length; i++)
+		if (rows_list[i].id == id) active_row = rows_list[i];
+	var rows = weapon_info.getElementsByTagName("tr");
+	for (var i = 0; i < rows.length; i++) {
+		rows[i].classList.remove("active-row");
+	}
+	active_row.classList.add("active-row");
+	active_row.scrollIntoView({
+		block: "center",
+		behavior: "smooth"
+	});
+	var weapon = data[active_row.id];
+	var crafting_materials = weapon["Craft"];
+	var upgrade_materials = weapon["Upgrade"];
+	var table = `<div class="mat-box"><table><thead><tr><th></th><th>Material</th><th>Qty</th></tr></thead><tbody>`;
+	var table_0 = document.createElement("table");
+	table_0.style.border = "none";
+	table_0.style.borderBottom = "1px solid #c0c0c0";
+
+	var craftable = typeof crafting_materials != "undefined";
+	var upgradeable = typeof upgrade_materials != "undefined";
+
+	if(craftable){
+		var table_1 = table;
+		for (var material in crafting_materials) {
+			if (material != "z") {
+				var sprite = getSprite(material);
+				table_1 += `
+				<tr>
+					<td>${sprite}</td>
+					<td style="text-align: left" class="mat-name">${material}</td>
+					<td>${crafting_materials[material]}</td>
+				</tr>
+			 `;
+			}
+		}
+		table_1 += "</tbody></table>";
+		document.getElementById("crafting_materials").innerHTML = table_1;
+	}
+	else document.getElementById("crafting_materials").innerHTML = `
+		<tr><td>None</td></tr></tbody></table></div>
+	`;
+	if(upgradeable){
+		var table_2 = table;
+		for (var material in upgrade_materials) {
+			if (material != "z") {
+				var sprite = getSprite(material);
+				table_2 += `
+				<tr>
+					<td>${sprite}</td>
+					<td style="text-align: left" class="mat-name">${material}</td>
+					<td>${upgrade_materials[material]}</td>
+				</tr>
+			 `;
+			}
+		}
+		table_2 += "</tbody></table>";
+		document.getElementById("upgrade_materials").innerHTML = table_2;
+	}
+	else document.getElementById("upgrade_materials").innerHTML = `
+		<tr><td>None</td></tr></tbody></table></div>
+	`;
+	
+	
+	
+	var tree = getWeaponTree(active_row.id).reverse();
+	var weapon_tree = document.getElementById("weapon_tree");
+	weapon_tree.classList.add("weapon-table");
+	while (weapon_tree.firstChild) weapon_tree.removeChild(weapon_tree.firstChild);
+	for (var i = 0; i < tree.length; i++) {
+		var row_0 = table_0.insertRow();
+		row_0.id = tree[i];
+		row_0.addEventListener("click", function(event) {
 			showMoreInfo(event, data);
-	    });
-	    if(tree[i] == active_row.id) row_0.classList.add("active-row");
-	    else row_0.classList.remove("active-row");
-	    var cell_0 = row_0.insertCell();
-	    cell_0.innerHTML = "";
-	    if(data[tree[i]]["Craft"]){
-		    cell_0.innerHTML += `<span style="float: right">Craftable</span>`;
-	    }
-	    else{
+		});
+		if (tree[i] == active_row.id) row_0.classList.add("active-row");
+		else row_0.classList.remove("active-row");
+		var cell_0 = row_0.insertCell();
+		cell_0.innerHTML = "";
+		if (data[tree[i]]["Craft"]) {
+			cell_0.innerHTML += `<span style="float: right">Craftable</span>`;
+		} else {
 			cell_0.innerHTML += `<span style="float: right">
 				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			</span>`;
-	    }
-	    
-	    cell_0.innerHTML += `<span style="float: left">${(i+1)}</span><span style="display: inline-block; text-align: left; width: 150px;">${tree[i]}</span>`;
-	    
-    }
-    table_1 += "</tbody></table></div>";
-    table_2 += "</tbody></table></div>";
-    
-    weapon_tree.appendChild(table_0);
-    weaponPreview();
-    document.getElementById("materials-table").style.display = "";
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("crafting_materials").innerHTML = table_1;
-    document.getElementById("upgrade_materials").innerHTML = table_2;
-    //----------------------------------------------------------------------------------------------------
-    //-----WEAPON TYPE------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------
-    switch(WEAPON_TYPE){
+		}
+
+		cell_0.innerHTML += `<span style="float: left">${(i+1)}</span><span style="display: inline-block; text-align: left; width: 150px;">${tree[i]}</span>`;
+
+	}
+	
+
+
+	weapon_tree.appendChild(table_0);
+	weaponPreview();
+	document.getElementById("materials-table").style.display = "";
+	document.getElementById("overlay").style.display = "block";
+	
+	
+	//----------------------------------------------------------------------------------------------------
+	//-----WEAPON TYPE------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------
+	switch (WEAPON_TYPE) {
+		case "Bow":
+			Bow_showMoreInfo(event);
+			break;
 		case "HH":
 			HH_showMoreInfo(event);
 			break;
-    }
+	}
 
-    document.getElementById("weapon_tree").scrollIntoView({behavior: "smooth"});
+	document.getElementById("weapon_tree").scrollIntoView({
+		behavior: "smooth"
+	});
+	document.getElementById("materials-table").scrollIntoView({
+		top: 0,
+		behavior: "smooth"
+	});
 }
-
 function hideInfo(){
 	document.getElementById("overlay").style.display = "none";
 	document.getElementById("materials-table").style.display = "none";
@@ -186,23 +224,26 @@ function loadData() {
 	rows_list = [];
 	var id = 1;
 	var sorting_header = [];
-	for(var name in data){
+	for (var name in data) {
 		var weapon = data[name];
 		var include_0 = 1;
-		if(fully_upgraded && weapon["UpgradesTo"] != null) include_0 = 0;
+		if (fully_upgraded && weapon["UpgradesTo"] != null) include_0 = 0;
 		var include_1 = 0;
 		var spec = (weapon["Special"] == null) ? "None" : weapon["Special"];
-		for(var i = 0; i < filters[0].length; i++){
-			if(spec.includes(filters[0][i])) include_1++;;
+		for (var i = 0; i < filters[0].length; i++) {
+			if (spec.includes(filters[0][i])) include_1++;;
 		}
-		if(filters[0].length == 0 || include_1 > 0) include_1 = 1;
+		if (filters[0].length == 0 || include_1 > 0) include_1 = 1;
 		else include_1 = 0;
-		
+
 		var include_2 = 1;
 		//----------------------------------------------------------------------------------------------------
 		//-----WEAPON TYPE------------------------------------------------------------------------------------
 		//----------------------------------------------------------------------------------------------------
-		switch(WEAPON_TYPE){
+		switch (WEAPON_TYPE) {
+			case "Bow":
+				include_2 = Bow_filterShots(weapon);
+				break;
 			case "GL":
 				include_2 = GL_filterShells(weapon);
 				break;
@@ -213,141 +254,200 @@ function loadData() {
 				include_2 = SA_filterPhials(weapon);
 				break;
 		}
-		
-		if(!include_0 || !include_1 || !include_2){
+		var include_3 = 0;
+		if(search_filter == "") include_3 = 1;
+		else if(search_filter != "" && name.toLowerCase().includes(search_filter.toLowerCase())) include_3 = 1;
+		if (!include_0 || !include_1 || !include_2 || !include_3) {
 			id++;
 			continue;
 		}
-	   
-        (function (weapon) {
-		  var rarity_colors = ["#f5f5f5", "#b688ff", "#e8d92b", "#ff8098", "#56d85d", "#5f8cff", "#ff4248"];
-            var special = (weapon["Special"] == null) ? "-" : weapon["Special"];
-            var defense = (weapon["Defense"] == null) ? "-" : "+" + weapon["Defense"];
-            var slots = (weapon["Slots"] == 1) ? "O--" : (weapon["Slots"] == 2) ? "OO-" : (weapon["Slots"] == 3) ? "OOO" : "---";
-		  var unique = "";
-		  //----------------------------------------------------------------------------------------------------
-		  //-----WEAPON TYPE------------------------------------------------------------------------------------
-		  //----------------------------------------------------------------------------------------------------
-		  switch(WEAPON_TYPE){
-			  case "GL":
-				unique = weapon["Shelling"];
-				break;
-			  case "HH":
-				unique = (weapon["Notes"]) ? `<img src="assets/database/notes/note_${weapon["Notes"][0]}.png"><img src="assets/database/notes/note_${weapon["Notes"][1]}.png"><img src="assets/database/notes/note_${weapon["Notes"][2]}.png">` : "---";
-				break;
-			  case "SA":
-				unique = weapon["Phial"];
-				break;
-		  }
-            
-            var sharpness = createSharpnessBar(weapon["Sharpness"]["+0"], weapon["Sharpness"]["+1"]);
-            var crafting_cost = (weapon["Craft"] && weapon["Craft"]["z"]) ? weapon["Craft"]["z"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "z" : "---";
-            var upgrade_cost = (weapon["Upgrade"] && weapon["Upgrade"]["z"]) ? weapon["Upgrade"]["z"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "z" : "---";
-            var row = document.createElement("tr");
-            row.innerHTML = `
-			 <td>${id}</td>
-                <td><div style='color: ${rarity_colors[weapon["Rarity"]-1]}'>${name}</div></td>
-                <td><div style='color: ${rarity_colors[weapon["Rarity"]-1]}'>${weapon["Rarity"]}</div></td>
-                <td>${weapon["Attack"]}<div style="color: #42e6ee;">(${parseInt(weapon["Attack"]) + 15})</div></td>
-                <td>${special}</td>
-                <td>${weapon["Affinity"]}%</td>
-			 <td>${slots}</td>
-                <td>${defense}</td>       
-		 `;
-		 //----------------------------------------------------------------------------------------------------
-		 //-----WEAPON TYPE------------------------------------------------------------------------------------
-		 //----------------------------------------------------------------------------------------------------
-		 switch(WEAPON_TYPE){
-			 case "GL":
-			 case "HH":
-			 case "SA":
-				row.innerHTML += `<td>${unique}</td>`;
-		 }
-            row.innerHTML += `    
-                <td style="width: 112px">${sharpness}</td>
-                <td>${crafting_cost}</td>
-                <td>${upgrade_cost}</td>
-            `;
-		  var sharp = 0;
-		  var modifiers = [1, 10, 100, 1000, 10000, 100000];
-		  var sharpness_bar_1_exist = (typeof weapon["Sharpness"]["+1"] !== 'undefined');
-		  for(var i = 0; i < (sharpness_bar_1_exist ? weapon["Sharpness"]["+1"] : weapon["Sharpness"]["+0"]).length; i++){
-			sharp += (sharpness_bar_1_exist ? weapon["Sharpness"]["+1"] : weapon["Sharpness"]["+0"])[i] * modifiers[i];
-		  }
 
-		  var headers = [
-			id, 
-			name, 
-			weapon["Rarity"], 
-			weapon["Attack"], 
-			(weapon["Special"] == null) ? 0 : parseInt(special.split(" ")[1]), 
-			weapon["Affinity"],  
-			slots, 
-			(weapon["Defense"] == null) ? 0 : weapon["Defense"],
-			unique, 
-			sharp, 
-			(weapon["Craft"] && weapon["Craft"]["z"]) ? weapon["Craft"]["z"] : 0, 
-			(weapon["Upgrade"] && weapon["Upgrade"]["z"]) ? weapon["Upgrade"]["z"] : 0
-		  ];
-		  var sort_type = 0;
-		  var header_index = 0;
-		  for(var i = 0; i < sorting.length; i++){
-			if(sorting[i] > 0){
-				header_index = i;
-				sort_type = sorting[i];
+		(function(weapon) {
+			var rarity_colors = ["#f5f5f5", "#b688ff", "#e8d92b", "#ff8098", "#56d85d", "#5f8cff", "#ff4248"];
+			var special = (weapon["Special"] == null) ? "-" : weapon["Special"];
+			var defense = (weapon["Defense"] == null) ? "-" : "+" + weapon["Defense"];
+			var slots = (weapon["Slots"] == 1) ? "O--" : (weapon["Slots"] == 2) ? "OO-" : (weapon["Slots"] == 3) ? "OOO" : "---";
+			var unique = "";
+			//----------------------------------------------------------------------------------------------------
+			//-----WEAPON TYPE------------------------------------------------------------------------------------
+			//----------------------------------------------------------------------------------------------------
+			switch (WEAPON_TYPE) {
+				case "Bow":
+					unique = weapon["Arc Shot"];
+					break;
+				case "GL":
+					unique = weapon["Shelling"];
+					break;
+				case "HH":
+					unique = (weapon["Notes"]) ? `<img src="assets/database/notes/note_${weapon["Notes"][0]}.png"><img src="assets/database/notes/note_${weapon["Notes"][1]}.png"><img src="assets/database/notes/note_${weapon["Notes"][2]}.png">` : "---";
+					break;
+				case "SA":
+					unique = weapon["Phial"];
+					break;
 			}
-		  }
-		  var index = -1;
-		  for(var i = 0; i < sorting_header.length; i++){
-                if((sort_type == 1 && headers[header_index] > sorting_header[i]) || (sort_type == 2 && headers[header_index] < sorting_header[i])){
-                    index = i;
-                    break;
-                }
-            }
-		  row.id = name;
-		  if(index == -1){
-			row.addEventListener("click", function (event) {
-				showMoreInfo(event, data);
-			});
-			rows_list.push(row);
-			weapon_info.appendChild(row);
-			sorting_header.push(headers[header_index]);
-			weapon_info.firstChild.scrollIntoView({
-			    behavior: 'smooth',
-			    block: 'center'
-			});
-		  }
-		  else{
-			var r = weapon_info.insertRow(index);
-			r.id = name;
-			r.innerHTML = row.innerHTML;
-			r.addEventListener("click", function (event) {
-				showMoreInfo(event, data);
-			});
-			rows_list.push(r);
-			sorting_header.splice(index, 0, headers[header_index]);
-			weapon_info.firstChild.scrollIntoView({
-			    behavior: 'smooth',
-			    block: 'center'
-			});
-		  }
-        })(weapon);
-	   id++;
-    }
+
+
+			var crafting_cost = (weapon["Craft"] && weapon["Craft"]["z"]) ? weapon["Craft"]["z"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "z" : "---";
+			var upgrade_cost = (weapon["Upgrade"] && weapon["Upgrade"]["z"]) ? weapon["Upgrade"]["z"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "z" : "---";
+			var row = document.createElement("tr");
+			row.innerHTML = `
+			 <td>${id}</td>
+			 <td><div style='color: ${rarity_colors[weapon["Rarity"]-1]}'>${name}</div></td>
+			 <td><div style='color: ${rarity_colors[weapon["Rarity"]-1]}'>${weapon["Rarity"]}</div></td>
+			 <td>${weapon["Attack"]}<div style="color: #42e6ee;">(${parseInt(weapon["Attack"]) + 15})</div></td>
+			 <td>${special}</td>
+			 <td>${weapon["Affinity"]}%</td>
+			 <td>${slots}</td>
+			 <td>${defense}</td>       
+		 `;
+			//----------------------------------------------------------------------------------------------------
+			//-----WEAPON TYPE------------------------------------------------------------------------------------
+			//----------------------------------------------------------------------------------------------------
+			switch (WEAPON_TYPE) {
+				case "Bow":
+					if(name == "Akantor Wrathmaker"){
+						row.innerHTML += `<td style="color: #25ff25">${unique}</td>`;
+						break;
+					}
+				case "GL":
+				case "HH":
+				case "SA":
+					row.innerHTML += `<td>${unique}</td>`;
+			}
+			var sharp = 0;
+			if (WEAPON_TYPE != "LBG" && WEAPON_TYPE != "HBG" && WEAPON_TYPE != "Bow") {
+				
+				var modifiers = [1, 10, 100, 1000, 10000, 100000];
+				var sharpness_bar_1_exist = (typeof weapon["Sharpness"]["+1"] !== 'undefined');
+				document.getElementById("sharpness-header").style.display = "";
+				var sharpness = createSharpnessBar(weapon["Sharpness"]["+0"], weapon["Sharpness"]["+1"]);
+				row.innerHTML += `<td style="width: 112px">${sharpness}</td>`;
+				for (var i = 0; i < (sharpness_bar_1_exist ? weapon["Sharpness"]["+1"] : weapon["Sharpness"]["+0"]).length; i++) {
+					sharp += (sharpness_bar_1_exist ? weapon["Sharpness"]["+1"] : weapon["Sharpness"]["+0"])[i] * modifiers[i];
+				}
+			}
+			else document.getElementById("sharpness-header").style.display = "none";
+			
+			var bow_charges = ["", "", "", ""];
+			if(WEAPON_TYPE == "Bow"){
+				for(var i = 0; i < 4; i++){
+					var charge = (typeof weapon["Charge"][i] == 'undefined') ? "---" : weapon["Charge"][i];
+					if(charge[0] == "+"){
+						row.innerHTML += `<td style="color: #25ff25">${charge.substring(1)}</td>`;
+					}
+					else row.innerHTML += `<td>${charge}</td>`;
+					
+					if(charge[0] == "+")
+						bow_charges[i] = charge.slice(-1)+charge.substring(1)[0];
+					else
+						bow_charges[i] = charge.slice(-1)+charge[0];
+				}				
+			}
+			row.innerHTML += `     
+			 <td>${crafting_cost}</td>
+			 <td>${upgrade_cost}</td>
+			`;
+
+			var headers = [
+				id,
+				name,
+				weapon["Rarity"],
+				weapon["Attack"],
+				(weapon["Special"] == null) ? "" :(special.split(" ")[1]+special[0]),
+				weapon["Affinity"],
+				slots,
+				(weapon["Defense"] == null) ? 0 : weapon["Defense"],
+				unique,
+				sharp,
+				bow_charges[0],
+				bow_charges[1],
+				bow_charges[2],
+				bow_charges[3],
+				(weapon["Craft"] && weapon["Craft"]["z"]) ? weapon["Craft"]["z"] : 0,
+				(weapon["Upgrade"] && weapon["Upgrade"]["z"]) ? weapon["Upgrade"]["z"] : 0
+			];
+			var sort_type = 0;
+			var header_index = 0;
+			for (var i = 0; i < sorting.length; i++) {
+				if (sorting[i] > 0) {
+					header_index = i;
+					sort_type = sorting[i];
+				}
+			}
+			var index = -1;
+			for (var i = 0; i < sorting_header.length; i++) {
+				if ((sort_type == 1 && headers[header_index] > sorting_header[i]) || (sort_type == 2 && headers[header_index] < sorting_header[i])) {
+					index = i;
+					break;
+				}
+			}
+			row.id = name;
+			if (index == -1) {
+				row.addEventListener("click", function(event) {
+					showMoreInfo(event, data);
+				});
+				rows_list.push(row);
+				weapon_info.appendChild(row);
+				sorting_header.push(headers[header_index]);
+				weapon_info.firstChild.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				});
+			} else {
+				var r = weapon_info.insertRow(index);
+				r.id = name;
+				r.innerHTML = row.innerHTML;
+				r.addEventListener("click", function(event) {
+					showMoreInfo(event, data);
+				});
+				rows_list.push(r);
+				sorting_header.splice(index, 0, headers[header_index]);
+				weapon_info.firstChild.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				});
+			}
+		})(weapon);
+		id++;
+	}
+}
+
+function getHeaders(){
+	var headers = [
+		document.getElementById("num-header"),
+		document.getElementById("name-header"),
+		document.getElementById("rarity-header"),
+		document.getElementById("attack-header"),
+		document.getElementById("elem_sts-header"),
+		document.getElementById("affinity-header"),
+		document.getElementById("slots-header"),
+		document.getElementById("defense-header"),
+		document.getElementById("unique-header"),
+		document.getElementById("sharpness-header"),
+		document.getElementById("bow-0-header"),
+		document.getElementById("bow-1-header"),
+		document.getElementById("bow-2-header"),
+		document.getElementById("bow-3-header"),
+		document.getElementById("crafting-header"),
+		document.getElementById("upgrade-header")
+	];
+
+	return headers;
 }
 
 function sortTable(col){
 	active_row = null;
 	while(weapon_info.firstChild) weapon_info.removeChild(weapon_info.firstChild);
-	var headers = document.getElementById("data-table").getElementsByTagName("th");
+	var headers = getHeaders();
+	
 	for(var i = 0; i < headers.length; i++) headers[i].style.backgroundColor = "#202020";
+
 	if(col != null){
-		var unique_sort = (WEAPON_TYPE == "GL");
 		if(col == 0){
 			sorting[col] ^= 1;
 			for(var i = 0; i < sorting.length; i++) if(i != col && sorting[i] > 0) sorting[col] = 0;
 		}
-		else if(col == 1 || col == 2 || (col == 8 && !unique_sort)){
+		else if(col == 1 || col == 2 || (col == 8 && !(WEAPON_TYPE == "GL"))){
 			if(sorting[col] > 0) sorting[col]--;
 			else if(sorting[col] == 0) sorting[col] = 2;
 		}
@@ -404,6 +504,11 @@ function filterTable(filter){
      //-----WEAPON TYPE------------------------------------------------------------------------------------
      //----------------------------------------------------------------------------------------------------
 	switch(WEAPON_TYPE){
+		case "Bow": 
+			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Wide", "Focus", "Blast", "Rapid", "Pierce", "Spread"];
+			document.getElementById("weapon_table").classList.add("table-view-3row");
+			elem_sts_filter_num = 8;
+			break;
 		case "DB": 
 			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Poison"];
 			elem_sts_filter_num = 9;
@@ -445,6 +550,7 @@ function filterTable(filter){
 		sortTable();
 		return;
 	}
+	
 	if(filter != "Clear" & filter_headers.includes(filter)){
 		switch(filter_headers.indexOf(filter) < elem_sts_filter_num){
 			case true:
@@ -468,6 +574,15 @@ function filterTable(filter){
 		filters[0] = [];
 		filters[1] = [];
 		fully_upgraded = 0;
+		search_filter = "";
+		if(document.getElementById("search") != null)
+				document.getElementById("search").value = "";
+		if(document.getElementById("rapid_dropdown") != null)
+				document.getElementById("rapid_dropdown").selectedIndex = 0;
+		if(document.getElementById("pierce_dropdown") != null)
+				document.getElementById("pierce_dropdown").selectedIndex = 0;
+		if(document.getElementById("spread_dropdown") != null)
+				document.getElementById("spread_dropdown").selectedIndex = 0;
 	}
 	var filter_elements = document.getElementById("filters").getElementsByTagName("td");
 	for(var i = 0; i < filter_elements.length; i++){
@@ -481,16 +596,58 @@ function filterTable(filter){
 	sortTable();
 }
 
+function toggleFilters(){
+	var filters = document.getElementById("filters");
+	if(filters.style.display != "none"){
+		filters.style.display = "none";
+		document.getElementById("filter_toggle").innerHTML = `
+			Filters <i class="fa fa-angle-down">
+		`;
+		document.getElementById("weapon_table").classList.remove("table-view-2row");
+		document.getElementById("weapon_table").classList.remove("table-view-3row");
+		document.getElementById("weapon_table").classList.add("table-view-full");
+	}
+	else{
+		filters.style.display = "";
+		document.getElementById("filter_toggle").innerHTML = `
+			Filters <i class="fa fa-angle-up">
+		`;
+		document.getElementById("weapon_table").classList.remove("table-view-full");
+		filterTable();
+	}
+}
+
+function search(){
+	search_filter = document.getElementById("search").value;
+	filterTable();
+}
+
+function addSearch(){
+	var filters = document.getElementById("filters-table");
+	var filter_row = filters.insertRow();
+	filter_row.classList.add("search-row");
+	filter_row.innerHTML = `
+		<td colspan="4"><i class="fa fa-search"> <input type="text" id="search" class="search-bar" oninput="search()"></input>	
+	`;
+	filter_row.id = "search_row";
+}
+
 function init(){
-	var selection_list = ["GS", "LS", "SnS", "DB", "Hammer", "HH", "Lance", "GL", "SA"];
-	sorting = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; 
+	var selection_list = ["GS", "LS", "SnS", "DB", "Hammer", "HH", "Lance", "GL", "SA", "LBG", "HBG", "Bow"];
+	sorting = Array(getHeaders().length).fill(0);
 	fully_upgraded = 0;
 	rows_list = [];
 	active_row = null;
+	search_filter = "";
+	if(document.getElementById("search") != null)
+		document.getElementById("search").value = "";
 	//----------------------------------------------------------------------------------------------------
 	//-----WEAPON TYPE------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------
 	switch(WEAPON_TYPE){
+		case "Bow":
+			Bow_init();
+			break;
 		case "DB":
 			DB_init();
 			break;
@@ -519,7 +676,13 @@ function init(){
 			SnS_init();
 			break;
 	}
+	addSearch();
 	filterTable();
+	if(document.getElementById("filters").style.display == "none"){
+		document.getElementById("weapon_table").classList.remove("table-view-2row");
+		document.getElementById("weapon_table").classList.remove("table-view-3row");
+		document.getElementById("weapon_table").classList.add("table-view-full");
+	}
 	
 	var selection = document.getElementById("selection").getElementsByTagName("td");
 	for(var i = 0; i < selection.length; i++){
@@ -534,6 +697,9 @@ displayNavmenu("database");
 //-----WEAPON TYPE------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 switch(window.location.hash.substring(1)){
+	case "Bow":
+		changeWeapon("Bow");
+		break;
 	case "DB":
 		changeWeapon("DB");
 		break;

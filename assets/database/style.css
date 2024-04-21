@@ -29,7 +29,11 @@ body{
 .weapon-table{
 	overflow-y: scroll;
 	scrollbar-gutter: stable;
-	max-height: 60vh;
+	max-height: calc(60vh - 15px);
+}
+
+.table-view-full{
+	max-height: 80vh;
 }
 
 .table-view-2row{
@@ -37,7 +41,7 @@ body{
 }
 
 .table-view-3row{
-	max-height: calc(60vh + 36px);
+	max-height: calc(60vh + 12px);
 }
 
 .weapon-table table{
@@ -149,6 +153,18 @@ body{
     background-color: #346495;
 }
 
+.search-row td:hover{
+	background-color: transparent;
+	cursor: default;
+}
+
+.search-bar{
+	background-color: #5A5A5A;
+	border: 1px solid #2A2A2A;
+	width: 30ch;
+	color: white;
+}
+
 .materials-table{
 	overflow-y: auto;
 	scrollbar-gutter: stable;
@@ -228,6 +244,7 @@ body{
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: auto;
+	min-width: 350px;
 	z-index: 999;
 	cursor: default;
 	overflow-y: auto;
@@ -237,9 +254,13 @@ body{
 
 .mat-box th, .mat-box td{
 	cursor: default;
-	vertical-align: bottom;
+	vertical-align: center;
 	height: 16px;
 	text-align: center;
+}
+
+.mat-name{
+	padding-top: 2px;
 }
 
 .overlay {
@@ -253,22 +274,39 @@ body{
 	display: none;
 }
 
+.charge-dropdown{
+	font-family: 'Rodin'; 
+	font-size: 10px;
+	color: #c0c0c0;
+	background-color: #5A5A5A; 
+	border: 1px solid #2A2A2A; 
+	text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000; 
+}
+
 @media only screen and (max-width: 600px){
 	.main{
 		width: 100%;
-		left: 0;	
+		left: 0;
 	}
 
 	.weapon-table{
-		max-height: calc(50vh - 32px);
+		max-height: calc(50vh - 64px);
+	}
+	
+	.table-view-full{
+		max-height: 68vh;
 	}
 	
 	.table-view-2row{
-		max-height: calc(50vh + 46px);
+		max-height: calc(50vh + 14px);
 	}
 
 	.table-view-3row{
-		max-height: calc(50vh + 10px);
+		max-height: calc(50vh - 32px);
+	}
+	
+	.search-bar{
+		width: 90%;
 	}
 
 	.info-block{
@@ -280,5 +318,15 @@ body{
 	}
 	.sharpness-1{
 		margin-top: 11px;
+	}
+	
+	.mat-name{
+		padding-top: 4px;
+	}
+	
+	.charge-dropdown{
+		font-size: 6px;
+		text-shadow: none;
+		width: 100%;
 	}
 }

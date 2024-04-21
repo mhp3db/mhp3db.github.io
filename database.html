@@ -31,7 +31,7 @@
 		<div class="filters">
 		<table id="filters-table" class="filters-table">
 		<thead>
-			<tr><th colspan="6">Filters</th></tr>
+			<tr><th colspan="6" id="filter_toggle" onclick="toggleFilters()" style="cursor: pointer">Filters <i class="fa fa-angle-up"></th></tr>
 		</thead>
 			<tr>
 				<td colspan="6" style="background-color: transparent; font-size: 12px; height: 100%; width: auto; cursor: default; padding: 0 0;" id="selection"><table class="filters-table" style="table-layout: unset"><tr>
@@ -46,25 +46,25 @@
 				<td onClick="changeWeapon('SA')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -96px -96px;"></span></center></td>
 				<td style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -48px -96px; opacity: 0.2"></span></center></td>
 				<td style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -64px -96px; opacity: 0.2"></span></center></td>
-				<td style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -80px -96px; opacity: 0.2"></span></center></td>
+				<td onClick="changeWeapon('Bow')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -80px -96px;"></span></center></td>
 				</tr></table></td>
 			</tr>
 		<tbody id="filters">
 			<tr>
-				<td rowspan="4" onClick="filterTable('Final')" style="color: #c0c0c0; font-size: 12px;">Final</br>Form</td>
+				<td rowspan="5" onClick="filterTable('Final')" style="color: #c0c0c0; font-size: 12px;">Final</br>Form</td>
 				
 				<td onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">None</td>
 				<td onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Fire</td>
 				<td onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Water</td>
 				<td onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Thunder</td>
 				
-				<td rowspan="4" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
+				<td rowspan="5" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
 				
 			</tr><tr>
 				<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
 				<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
-				<td onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Poison</td>
-				<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Paralyze</td>				
+				<td id="poison_filter" onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Poison</td>
+				<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Paralyze</td>
 			</tr>
 
 		</tbody>
@@ -74,18 +74,22 @@
 			<table id="data-table">
 			<thead>
 			    <tr>
-					<th onClick="sortTable(0)"># <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(1)">Name <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(2)">Rarity <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(3)">Attack <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(4)">Elem/Sts <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(5)">Affinity <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(6)">Slots <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(7)">Defense <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(0)" id="num-header"># <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(1)" id="name-header">Name <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(2)" id="rarity-header">Rarity <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(3)" id="attack-header">Attack <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(4)" id="elem_sts-header">Elem/Sts <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(5)" id="affinity-header">Affinity <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(6)" id="slots-header">Slots <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(7)" id="defense-header">Defense <i class="fa fa-fw fa-sort"></i></th>
 					<th onClick="sortTable(8)" id="unique-header" style="display: none">-</th>
-					<th onClick="sortTable(9)">Sharpness <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(10)">Crafting Price <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(11)">Upgrade Price <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(9)" id="sharpness-header" style="display: none">Sharpness <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(10)" id="bow-0-header" style="display: none">-</th>
+					<th onClick="sortTable(11)" id="bow-1-header" style="display: none">-</th>
+					<th onClick="sortTable(12)" id="bow-2-header" style="display: none">-</th>
+					<th onClick="sortTable(13)" id="bow-3-header" style="display: none">-</th>
+					<th onClick="sortTable(14)" id="crafting-header">Crafting Price <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(15)" id="upgrade-header">Upgrade Price <i class="fa fa-fw fa-sort"></i></th>
 			    </tr>
 			</thead>
 			<tbody id="weapon_info"></tbody>
@@ -113,11 +117,11 @@
 					</td>
 				</tr>
 				<tr>
-					<th>Crafting Materials</th>
-					<th>Upgrade Materials</th>
+					<th id="crafting_materials-header">Crafting Materials</th>
+					<th id="upgrade_materials-header">Upgrade Materials</th>
 				</tr>
 				<tr>
-					<td style="border-bottom: 1px solid #c0c0c0"><div id="crafting_materials" class="info-table"></div></td>
+					<td id="crafting_materials" class="info-table"style="border-bottom: 1px solid #c0c0c0"></td>
 					
 					<td id="upgrade_materials" class="info-table" style="border-bottom: 1px solid #c0c0c0"></td>
 				</tr>
@@ -125,7 +129,7 @@
 					<th colspan="2">Weapon Tree</th>
 				</tr>
 				<tr>
-					<td colspan="2" id="weapon_tree" class="info-table"></td>
+					<td colspan="2" id="weapon_tree"></td>
 				</tr>
 			</table>
 		</div>
@@ -138,6 +142,8 @@
 <script src="scripts/database/weapon_preview.js"></script>
 <script src="scripts/database/sprite_data.js"></script>
 <script src="scripts/database/songlist.js"></script>
+<script src="scripts/database/Bow_data.js"></script>
+<script src="scripts/database/Bow_scripts.js"></script>
 <script src="scripts/database/DB_data.js"></script>
 <script src="scripts/database/DB_scripts.js"></script>
 <script src="scripts/database/GL_data.js"></script>

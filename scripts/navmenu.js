@@ -47,7 +47,7 @@ function displayNavmenu(page){
 	}
 	
 	document.getElementById("footer").innerHTML = `
-		<div class="footer"><a href="https://github.com/SilverJolteon">© SilverJolteon</a></div>
+		<div class="footer"><a href="https://github.com/SilverJolteon">©2024 SilverJolteon</a></div>
 	`;
 	
 }

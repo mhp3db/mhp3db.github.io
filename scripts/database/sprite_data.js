@@ -17,6 +17,9 @@ var sprite_data = {
 		"32, 16": [
 			"Humspun Conch","S.Rath Scale+","Ukanlos Scale"
 		],
+		"32, 48": [
+			"C.Range Coating"
+		],
 		"48, 0": [
 			"Sap Plant"
 		],
@@ -94,6 +97,9 @@ var sprite_data = {
 			"Nutrients","Mega Nutrients","Cleanser","Monster Fluid",
 			"Vivid Fluid","Brilliant Fluid"
 		],
+		"32, 48": [
+			"Sleep Coating"
+		],
 		"48, 16": [
 			"J.Barroth Ridge+","J.Barroth Scalp","J.Barroth Tail","G.Agnak Fin+",
 			"G.Agnak Tail","Dewy Pleura+"
@@ -124,6 +130,9 @@ var sprite_data = {
 		],
 	},
 	"PAL_3": {
+		"32, 48": [
+			"Paint Coating"
+		],
 		"64, 16": [
 			"Monster Keenbone"
 		],
@@ -153,6 +162,9 @@ var sprite_data = {
 		],
 		"32, 16": [
 			"Jaggi Scale","Jaggi Scale+","P.Ludroth Scale+","Alatreon Plate"
+		],
+		"32, 48": [
+			"Poison Coating"
 		],
 		"48, 16": [
 			"G.Jaggi Head","Venom Gland","Grim Venom Gland","Alatreon Tail"
@@ -314,6 +326,9 @@ var sprite_data = {
 			"Demondrug","Mega Demondrug","Hot Drink","Tranquilizer",
 			"ElderDragonBlood"
 		],
+		"32, 48": [
+			"Power Coating"
+		],		
 		"48, 0": [
 			"Fire Herb","Hot Pepper"
 		],
@@ -367,6 +382,9 @@ var sprite_data = {
 		"32, 16": [
 			"R.Ludroth Scale","R.Ludroth Scale+","G.Rathian Scale+","Uragaan Scale",
 			"Uragaan Scale+","Tigrex Scale","Tigrex Scale+"
+		],
+		"32, 48": [
+			"Para Coating"
 		],
 		"32, 32": [
 			"Immunizer","Energy Drink","Dash Juice","Mega Dash Juice",
@@ -447,6 +465,9 @@ var sprite_data = {
 		"32, 32": [
 			"Antidote","Monster Broth"
 		],
+		"32, 48": [
+			"Exhaust Coating"
+		],
 		"48, 0": [
 			"Antidote Herb","Snow Herb"
 		],
@@ -502,6 +523,9 @@ var sprite_data = {
 			"Rhenoplos Scalp","Nargacuga Tail","Narga Tailspike","Nargacuga Razor",
 			"Narga Razor+","Narga Marrow","B.Diablos Ridge+","Akantor Tail",
 			"Akantor Spike"
+		],
+		"48, 48": [
+			"No Coating"
 		],
 		"96, 0": [
 			"Insect Husk","Carpenterbug","Butterfly Beetle"
