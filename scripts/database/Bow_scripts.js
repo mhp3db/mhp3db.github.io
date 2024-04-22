@@ -74,51 +74,66 @@ function Bow_showMoreInfo(event){
 	table += "</table></div>";
 	document.getElementById("bow_coatings").innerHTML = table;
 }
-var charge_lvl_filters = [0, 0, 0];
+
 function Bow_filterShots(weapon){
-	var include = [1, 1, 1, 1, 1, 1];
+	var include = [1, 1, 1, 1, 1];
 	for(var i = 0; i < filters[1].length; i++){
 		switch(filters[1][i]){
-			case "Wide":
+			case "Arc Shot":
 				var arc_shot = weapon["Arc Shot"];
-				if(!arc_shot.includes("Wide")) include[0] = 0;
+				if(!arc_shot.includes(arc_shot_filter)) include[0] = 0;
 				break;
-			case "Focus":
-				var arc_shot = weapon["Arc Shot"];
-				if(!arc_shot.includes("Focus")) include[1] = 0;
+			case "Charge 1":
+				var charge = weapon["Charge"][0];
+				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[0]))){
+					include[1] = 0;
+				}
 				break;
-			case "Blast":
-				var arc_shot = weapon["Arc Shot"];
-				if(!arc_shot.includes("Blast")) include[2] = 0;
+			case "Charge 2":
+				var charge = weapon["Charge"][1];
+				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[1]))){
+					include[2] = 0;
+				}
 				break;
-			case "Rapid":
-				var charge = weapon["Charge"][charge_lvl_filters[0]];
-				if(!((typeof charge !== "undefined") && charge.includes("Rapid"))){
+			case "Charge 3":
+				var charge = weapon["Charge"][2];
+				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[2]))){
 					include[3] = 0;
 				}
 				break;
-			case "Pierce":
-				var charge = weapon["Charge"][charge_lvl_filters[1]];
-				if(!((typeof charge !== "undefined") && charge.includes("Pierce"))){
+			case "Charge 4":
+				var charge = weapon["Charge"][3];
+				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[3]))){
 					include[4] = 0;
-				}
-				break;
-			case "Spread":
-				var charge = weapon["Charge"][charge_lvl_filters[2]];
-				if(!((typeof charge !== "undefined") && charge.includes("Spread"))){
-					include[5] = 0;
 				}
 				break;
 		}
 	}
 
-	return include[0] && include[1] && include[2] && include[3] && include[4] && include[5];
+	return include[0] && include[1] && include[2] && include[3] && include[4];
 }
 
-function Bow_setFilter(id, value){
-	charge_lvl_filters[id] = value;
-}
+var arc_shot_filter = "Wide";
+var charge_filters = ["Rapid", "Rapid", "Rapid", "Rapid"];
 
+function Bow_setFilter(filter, id){
+	if(filter == "Arc Shot"){
+		arc_shot_filter = (id == 0) ? "Wide" : (id == 1) ? "Focus" : "Blast";
+	}
+	else if(filter == "Charge 1"){
+		charge_filters[0] = (id == 0) ? "Rapid" : (id == 1) ? "Pierce" : "Spread";
+	}
+	else if(filter == "Charge 2"){
+		charge_filters[1] = (id == 0) ? "Rapid" : (id == 1) ? "Pierce" : "Spread";
+	}
+	else if(filter == "Charge 3"){
+		charge_filters[2] = (id == 0) ? "Rapid" : (id == 1) ? "Pierce" : "Spread";
+	}
+	else if(filter == "Charge 4"){
+		charge_filters[3] = (id == 0) ? "Rapid" : (id == 1) ? "Pierce" : "Spread";
+	}
+	filterTable();
+}
 function Bow_init(){
 	data = Bow_data;
 	var header = document.getElementById("unique-header");
@@ -147,36 +162,49 @@ function Bow_init(){
 		</tr><tr>
 			<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
 			<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
-			<td onClick="filterTable('Wide')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Wide</br>Arc Shot</td>
-			<td onClick="filterTable('Focus')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Focus</br>Arc Shot</td>
+			
+			<td style="pointer-events: none" class="empty-filter"></td>
+			
+			<td onClick="filterTable('Arc Shot')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Arc Shot</label><br>
+				<select id="arc_shot_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Arc Shot', this.selectedIndex)">
+					<option>Wide</option>
+					<option>Focus</option>
+					<option>Blast</option>
+				</select>
+			</td>
 			
 		</tr><tr>
-			<td onClick="filterTable('Blast')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Blast</br>Arc Shot</td>
-			<td onClick="filterTable('Rapid')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Rapid:</label><br>
-				<select id="rapid_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter(0, this.selectedIndex)">
-					<option>Charge 1</option>
-					<option>Charge 2</option>
-					<option>Charge 3</option>
-					<option>Charge 4</option>
+			<td onClick="filterTable('Charge 1')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Charge 1</label><br>
+				<select id="charge_1_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 1', this.selectedIndex)">
+					<option>Rapid</option>
+					<option>Pierce</option>
+					<option>Spread</option>
 				</select>
 			</td>
-			<td onClick="filterTable('Pierce')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Pierce:</label><br>
-				<select id="pierce_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter(1, this.selectedIndex)">
-					<option>Charge 1</option>
-					<option>Charge 2</option>
-					<option>Charge 3</option>
-					<option>Charge 4</option>
+			<td onClick="filterTable('Charge 2')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Charge 2</label><br>
+				<select id="charge_2_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 2', this.selectedIndex)">
+					<option>Rapid</option>
+					<option>Pierce</option>
+					<option>Spread</option>
 				</select>
 			</td>
-			<td onClick="filterTable('Spread')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Spread:</label><br>
-				<select id="spread_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter(2, this.selectedIndex)">
-					<option>Charge 1</option>
-					<option>Charge 2</option>
-					<option>Charge 3</option>
-					<option>Charge 4</option>
+			<td onClick="filterTable('Charge 3')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Charge 3</label><br>
+				<select id="charge_3_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 3', this.selectedIndex)">
+					<option>Rapid</option>
+					<option>Pierce</option>
+					<option>Spread</option>
+				</select>
+			</td>
+			<td onClick="filterTable('Charge 4')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Charge 4</label><br>
+				<select id="charge_4_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 4', this.selectedIndex)">
+					<option>Rapid</option>
+					<option>Pierce</option>
+					<option>Spread</option>
 				</select>
 			</td>
 		</tr>

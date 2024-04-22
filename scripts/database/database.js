@@ -505,7 +505,7 @@ function filterTable(filter){
      //----------------------------------------------------------------------------------------------------
 	switch(WEAPON_TYPE){
 		case "Bow": 
-			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Wide", "Focus", "Blast", "Rapid", "Pierce", "Spread"];
+			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "", "Arc Shot", "Charge 1", "Charge 2", "Charge 3", "Charge 4"];
 			document.getElementById("weapon_table").classList.add("table-view-3row");
 			elem_sts_filter_num = 8;
 			break;
@@ -577,12 +577,12 @@ function filterTable(filter){
 		search_filter = "";
 		if(document.getElementById("search") != null)
 				document.getElementById("search").value = "";
-		if(document.getElementById("rapid_dropdown") != null)
-				document.getElementById("rapid_dropdown").selectedIndex = 0;
-		if(document.getElementById("pierce_dropdown") != null)
-				document.getElementById("pierce_dropdown").selectedIndex = 0;
-		if(document.getElementById("spread_dropdown") != null)
-				document.getElementById("spread_dropdown").selectedIndex = 0;
+		if(document.getElementById("arc_shot_dropdown") != null)
+				document.getElementById("arc_shot_dropdown").selectedIndex = 0;
+		for(var i = 1; i <= 4; i++){
+			if(document.getElementById("charge_"+i+"_dropdown") != null)
+				document.getElementById("charge_"+i+"_dropdown").selectedIndex = 0;	
+		}
 	}
 	var filter_elements = document.getElementById("filters").getElementsByTagName("td");
 	for(var i = 0; i < filter_elements.length; i++){
