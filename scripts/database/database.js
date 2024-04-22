@@ -579,6 +579,8 @@ function filterTable(filter){
 				document.getElementById("search").value = "";
 		if(document.getElementById("arc_shot_dropdown") != null)
 				document.getElementById("arc_shot_dropdown").selectedIndex = 0;
+		if(document.getElementById("coating_dropdown") != null)
+				document.getElementById("coating_dropdown").selectedIndex = 0;
 		for(var i = 1; i <= 4; i++){
 			if(document.getElementById("charge_"+i+"_dropdown") != null)
 				document.getElementById("charge_"+i+"_dropdown").selectedIndex = 0;	
