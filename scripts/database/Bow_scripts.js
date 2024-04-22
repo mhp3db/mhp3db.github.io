@@ -76,49 +76,63 @@ function Bow_showMoreInfo(event){
 }
 
 function Bow_filterShots(weapon){
-	var include = [1, 1, 1, 1, 1];
+	var include = [1, 1, 1, 1, 1, 1];
 	for(var i = 0; i < filters[1].length; i++){
 		switch(filters[1][i]){
 			case "Arc Shot":
 				var arc_shot = weapon["Arc Shot"];
 				if(!arc_shot.includes(arc_shot_filter)) include[0] = 0;
 				break;
+			case "Coating":
+				var coatings = weapon["Coatings"];
+				if(!coatings.includes(coating_filter)) include[1] = 0;
+				break;
 			case "Charge 1":
 				var charge = weapon["Charge"][0];
 				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[0]))){
-					include[1] = 0;
+					include[2] = 0;
 				}
 				break;
 			case "Charge 2":
 				var charge = weapon["Charge"][1];
 				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[1]))){
-					include[2] = 0;
+					include[3] = 0;
 				}
 				break;
 			case "Charge 3":
 				var charge = weapon["Charge"][2];
 				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[2]))){
-					include[3] = 0;
+					include[4] = 0;
 				}
 				break;
 			case "Charge 4":
 				var charge = weapon["Charge"][3];
 				if(!((typeof charge !== "undefined") && charge.includes(charge_filters[3]))){
-					include[4] = 0;
+					include[5] = 0;
 				}
 				break;
 		}
 	}
 
-	return include[0] && include[1] && include[2] && include[3] && include[4];
+	return include[0] && include[1] && include[2] && include[3] && include[4] && include[5];
 }
 
 var arc_shot_filter = "Wide";
+var coating_filter = "Power Coating";
 var charge_filters = ["Rapid", "Rapid", "Rapid", "Rapid"];
 
 function Bow_setFilter(filter, id){
 	if(filter == "Arc Shot"){
 		arc_shot_filter = (id == 0) ? "Wide" : (id == 1) ? "Focus" : "Blast";
+	}
+	else if(filter == "Coating"){
+		coating_filter = 
+			(id == 0) ? "Power Coating" : 
+			(id == 1) ? "C.Range Coating" :
+			(id == 2) ? "Poison Coating" :
+			(id == 3) ? "Paint Coating" :
+			(id == 4) ? "Para Coating" :
+			(id == 5) ? "Exhaust Coating" : "Sleep Coating";
 	}
 	else if(filter == "Charge 1"){
 		charge_filters[0] = (id == 0) ? "Rapid" : (id == 1) ? "Pierce" : "Spread";
@@ -163,14 +177,25 @@ function Bow_init(){
 			<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
 			<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
 			
-			<td style="pointer-events: none" class="empty-filter"></td>
-			
 			<td onClick="filterTable('Arc Shot')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
 				<label>Arc Shot</label><br>
 				<select id="arc_shot_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Arc Shot', this.selectedIndex)">
 					<option>Wide</option>
 					<option>Focus</option>
 					<option>Blast</option>
+				</select>
+			</td>
+			
+			<td onClick="filterTable('Coating')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Coating</label><br>
+				<select id="coating_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Coating', this.selectedIndex)">
+					<option>Power</option>
+					<option>C.Range</option>
+					<option>Poison</option>
+					<option>Paint</option>
+					<option>Para</option>
+					<option>Exhaust</option>
+					<option>Sleep</option>
 				</select>
 			</td>
 			

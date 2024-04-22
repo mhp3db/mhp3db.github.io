@@ -505,7 +505,7 @@ function filterTable(filter){
      //----------------------------------------------------------------------------------------------------
 	switch(WEAPON_TYPE){
 		case "Bow": 
-			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "", "Arc Shot", "Charge 1", "Charge 2", "Charge 3", "Charge 4"];
+			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Arc Shot", "Coating", "Charge 1", "Charge 2", "Charge 3", "Charge 4"];
 			document.getElementById("weapon_table").classList.add("table-view-3row");
 			elem_sts_filter_num = 8;
 			break;
