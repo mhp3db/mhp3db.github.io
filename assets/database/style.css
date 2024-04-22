@@ -279,12 +279,10 @@ body{
 }
 
 .charge-dropdown{
-	font-family: 'Rodin'; 
 	font-size: 10px;
 	color: #c0c0c0;
 	background-color: #5A5A5A; 
 	border: 1px solid #2A2A2A; 
-	text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000; 
 }
 
 @media only screen and (max-width: 600px){
@@ -330,7 +328,6 @@ body{
 	
 	.charge-dropdown{
 		font-size: 6px;
-		text-shadow: none;
 		width: 100%;
 	}
 }

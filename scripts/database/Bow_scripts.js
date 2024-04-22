@@ -178,7 +178,7 @@ function Bow_init(){
 			<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
 			
 			<td onClick="filterTable('Arc Shot')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Arc Shot</label><br>
+				<label>Arc Shot:</label><br>
 				<select id="arc_shot_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Arc Shot', this.selectedIndex)">
 					<option>Wide</option>
 					<option>Focus</option>
@@ -187,7 +187,7 @@ function Bow_init(){
 			</td>
 			
 			<td onClick="filterTable('Coating')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Coating</label><br>
+				<label>Coating:</label><br>
 				<select id="coating_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Coating', this.selectedIndex)">
 					<option>Power</option>
 					<option>C.Range</option>
@@ -201,7 +201,7 @@ function Bow_init(){
 			
 		</tr><tr>
 			<td onClick="filterTable('Charge 1')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Charge 1</label><br>
+				<label>Charge 1:</label><br>
 				<select id="charge_1_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 1', this.selectedIndex)">
 					<option>Rapid</option>
 					<option>Pierce</option>
@@ -209,7 +209,7 @@ function Bow_init(){
 				</select>
 			</td>
 			<td onClick="filterTable('Charge 2')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Charge 2</label><br>
+				<label>Charge 2:</label><br>
 				<select id="charge_2_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 2', this.selectedIndex)">
 					<option>Rapid</option>
 					<option>Pierce</option>
@@ -217,7 +217,7 @@ function Bow_init(){
 				</select>
 			</td>
 			<td onClick="filterTable('Charge 3')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Charge 3</label><br>
+				<label>Charge 3:</label><br>
 				<select id="charge_3_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 3', this.selectedIndex)">
 					<option>Rapid</option>
 					<option>Pierce</option>
@@ -225,7 +225,7 @@ function Bow_init(){
 				</select>
 			</td>
 			<td onClick="filterTable('Charge 4')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
-				<label>Charge 4</label><br>
+				<label>Charge 4:</label><br>
 				<select id="charge_4_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 4', this.selectedIndex)">
 					<option>Rapid</option>
 					<option>Pierce</option>
