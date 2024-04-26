@@ -25,7 +25,7 @@ function displayNavmenu(page){
 	sidenav.innerHTML += `<a href="index.html">Home</a>`;
 	sidenav.innerHTML += `<a href="database.html">Weapon Database</a>`;
 	sidenav.innerHTML += `<a href="damage-calculator.html">Damage Calculator</a>`;
-	sidenav.innerHTML += `<a href="charm-search.html">Charm Table Search</a>`;
+	sidenav.innerHTML += `<a href="charm-search.html">Charm Lookup</a>`;
 	sidenav.innerHTML += `<a href="kelbi-horn.html">Kelbi Horn Reward Tables</a>`;
 	
 	switch(page){
@@ -39,7 +39,7 @@ function displayNavmenu(page){
 			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Damage Calculator</span>`;
 			break;
 		case "charm-search":
-			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Charm Table Search</span>`;
+			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Charm Lookup</span>`;
 			break;
 		case "kelbi-horn":
 			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Kelbi Horn Reward Tables</span>`;
