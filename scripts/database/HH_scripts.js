@@ -1,3 +1,6 @@
+var HH_song_effects = [];
+var HH_filtered_effect = "Abnormal Status Negated";
+
 function notesMatch(notes_0, notes_1){
 	n0 = notes_0.toString();
 	n1 = notes_1.toString();
@@ -19,6 +22,18 @@ function getSonglist(notes){
     return null;
 }
 
+function getFullSonglist(){
+	HH_song_effects = [];
+	for(var name in data){
+		var notes = data[name]["Notes"];
+		var songlist = getSonglist(notes);
+		for(var effect in songlist){
+			if(!HH_song_effects.includes(songlist[effect])) HH_song_effects.push(songlist[effect]);
+		} 
+	}
+	HH_song_effects.sort();
+}
+
 function HH_showMoreInfo(event){
 	var weapon = data[active_row.id];
 	var notes = weapon["Notes"];
@@ -37,15 +52,51 @@ function HH_showMoreInfo(event){
 
 function HH_filterNotes(weapon){
 	document.getElementById("horn_melodies").innerHTML = "";
-	var include = 1;
+	var include_0 = 1;
+	var include_1 = 1;
+	var note_names = ["W", "P", "R", "B", "G", "C", "Y", "O"];
 	for(var i = 0; i < filters[1].length; i++){
-		if(!weapon["Notes"].includes(filters[1][i])) include = 0;
+		if(note_names.includes(filters[1][i])) if(!weapon["Notes"].includes(filters[1][i])) include_0 = 0;
+		if(filters[1][i] == "Effect"){
+			var effects = [];
+			var songlist = getSonglist(weapon["Notes"])
+			for(var effect in songlist) effects.push(songlist[effect]);
+			if(!effects.includes(HH_filtered_effect)) include_1 = 0;
+		}
 	}
-	return include;
+	return include_0 && include_1;
+}
+
+function HH_setFilter(filter, id){
+	switch(filter){
+		case "WP":
+			switch(id){
+				case "W":
+					if(filters[1].includes("P")){
+						var index = filters[1].indexOf("P");
+						if(index != -1) filters[1].splice(index, 1);
+					}
+					filterTable("W");
+					break;
+				case "P":
+					if(filters[1].includes("W")){
+						var index = filters[1].indexOf("W");
+						if(index != -1) filters[1].splice(index, 1);
+					}
+					filterTable("P");
+					break;
+			}
+			break;
+		case "Effect":
+			HH_filtered_effect = HH_song_effects[id];
+			filterTable();
+			break;
+	}
 }
 
 function HH_init(){
 	data = HH_data;
+	getFullSonglist();
 	var header = document.getElementById("unique-header");
 	header.innerHTML = `Notes <i class="fa fa-fw fa-sort"></i>`;
 	header.style.display = "";
@@ -54,18 +105,28 @@ function HH_init(){
 	var filters = document.getElementById("filters-table");
 	var filter_row_0 = filters.insertRow();
 	filter_row_0.innerHTML = `
-		<td onClick="filterTable('W')"><img src="assets/database/notes/note_W.png"></td>
-		<td onClick="filterTable('P')"><img src="assets/database/notes/note_P.png"></td>
+		<td style="background-color: transparent; font-size: 12px; height: 100%; width: auto; cursor: default; padding: 0 0;">
+			<table class="filters-table" style="table-layout: unset"><tr>
+				<td onClick="HH_setFilter('WP', 'W')"><img src="assets/database/notes/note_W.png"></td>
+				<td onClick="HH_setFilter('WP', 'P')"><img src="assets/database/notes/note_P.png"></td>
+			</tr></table>
+		</td>
 		<td onClick="filterTable('R')"><img src="assets/database/notes/note_R.png"></td>
 		<td onClick="filterTable('B')"><img src="assets/database/notes/note_B.png"></td>
+		<td onClick="filterTable('G')"><img src="assets/database/notes/note_G.png"></td>
 	`;
 	filter_row_0.id = "filter_row_0";
 	var filter_row_1 = filters.insertRow();
 	filter_row_1.innerHTML = `
-		<td onClick="filterTable('G')"><img src="assets/database/notes/note_G.png"></td>
+		
 		<td onClick="filterTable('C')"><img src="assets/database/notes/note_C.png"></td>
 		<td onClick="filterTable('Y')"><img src="assets/database/notes/note_Y.png"></td>
 		<td onClick="filterTable('O')"><img src="assets/database/notes/note_O.png"></td>
+		<td onClick="filterTable('Effect')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+				<label>Effect:</label><br>
+				<select id="song_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="HH_setFilter('Effect', this.selectedIndex)">
+				</select>
+			</td>
 	`;
 	filter_row_1.id = "filter_row_1";
 	
@@ -85,6 +146,13 @@ function HH_init(){
 	cell_1.innerHTML = 
 		`<table><thead><tr style="background-color: #707070"><th>Notes</th><th>Effect</th></tr></thead></table>
 	`;
+	getFullSonglist();
+	var option = document.createElement("option");
+	for(var i = 0; i < HH_song_effects.length; i++) {
+		option = document.createElement("option");
+		option.text = HH_song_effects[i];
+		document.getElementById("song_dropdown").add(option);
+	}	
 }
 
 function HH_terminate(){

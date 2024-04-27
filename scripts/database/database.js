@@ -527,7 +527,7 @@ function filterTable(filter){
 			document.getElementById("weapon_table").classList.add("table-view-2row");
 			break;
 		case "HH": 
-			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Poison", "Paralyze", "W", "P", "R", "B", "G", "C", "Y", "O"];
+			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Poison", "Paralyze", "", "W", "P", "R", "B", "G", "C", "Y", "O", "Effect"];
 			break;
 		case "Lance": 
 			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Poison", "Paralyze", "Sleep"];
