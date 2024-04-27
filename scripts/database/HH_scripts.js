@@ -124,7 +124,7 @@ function HH_init(){
 		<td onClick="filterTable('O')"><img src="assets/database/notes/note_O.png"></td>
 		<td onClick="filterTable('Effect')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
 				<label>Effect:</label><br>
-				<select id="song_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="HH_setFilter('Effect', this.selectedIndex)">
+				<select id="HH_effect_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="HH_setFilter('Effect', this.selectedIndex)">
 				</select>
 			</td>
 	`;
@@ -151,7 +151,7 @@ function HH_init(){
 	for(var i = 0; i < HH_song_effects.length; i++) {
 		option = document.createElement("option");
 		option.text = HH_song_effects[i];
-		document.getElementById("song_dropdown").add(option);
+		document.getElementById("HH_effect_dropdown").add(option);
 	}	
 }
 

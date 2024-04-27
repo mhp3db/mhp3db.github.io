@@ -585,6 +585,8 @@ function filterTable(filter){
 			if(document.getElementById("charge_"+i+"_dropdown") != null)
 				document.getElementById("charge_"+i+"_dropdown").selectedIndex = 0;	
 		}
+		if(document.getElementById("HH_effect_dropdown") != null)
+				document.getElementById("HH_effect_dropdown").selectedIndex = 0;
 	}
 	var filter_elements = document.getElementById("filters").getElementsByTagName("td");
 	for(var i = 0; i < filter_elements.length; i++){
