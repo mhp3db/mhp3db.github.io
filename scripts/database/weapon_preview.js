@@ -36,6 +36,7 @@ function onMouseMove(e) {
 function onMouseUp() {
 	document.removeEventListener("mousemove", onMouseMove);
 	document.removeEventListener("mouseup", onMouseUp);
+	preview.style.cursor = "grab";
 }
 
 function onMouseDown(e) {
@@ -44,6 +45,7 @@ function onMouseDown(e) {
 		document.addEventListener("mousemove", onMouseMove);
 		document.addEventListener("mouseup", onMouseUp);
 		startX = e.clientX;
+		preview.style.cursor = "grabbing";
 	}
 }
 
@@ -87,6 +89,7 @@ function weaponPreview() {
 	preview.style.width = "221px";
 	preview.style.height = "200px";
 	preview.style.display = "flex";
+	preview.style.cursor = "grab";
 	frame = 0;
 
 	var weapon = active_row.id;

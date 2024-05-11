@@ -35,6 +35,9 @@ function changeWeapon(type){
 		case "Lance":
 			Lance_terminate();
 			break;
+		case "LBG":
+			LBG_terminate();
+			break;
 		case "SA":
 			SA_terminate();
 			break;
@@ -110,7 +113,7 @@ function showMoreInfo(event) {
 	var weapon = data[active_row.id];
 	var crafting_materials = weapon["Craft"];
 	var upgrade_materials = weapon["Upgrade"];
-	var table = `<div class="mat-box"><table><thead><tr><th></th><th>Material</th><th>Qty</th></tr></thead><tbody>`;
+	var table = `<div class="mat-box"><table><thead><tr><th></th><th>Material</th><th>Req</th></tr></thead><tbody>`;
 	var table_0 = document.createElement("table");
 	table_0.style.border = "none";
 	table_0.style.borderBottom = "1px solid #c0c0c0";
@@ -205,6 +208,9 @@ function showMoreInfo(event) {
 		case "HH":
 			HH_showMoreInfo(event);
 			break;
+		case "LBG":
+			LBG_showMoreInfo(event);
+			break;
 	}
 
 	document.getElementById("weapon_tree").scrollIntoView({
@@ -250,10 +256,14 @@ function loadData() {
 			case "HH":
 				include_2 = HH_filterNotes(weapon);
 				break;
+			case "LBG":
+				include_2 = LBG_filterShots(weapon);
+				break;
 			case "SA":
 				include_2 = SA_filterPhials(weapon);
 				break;
 		}
+		if(include_2 == -1) return;
 		var include_3 = 0;
 		if(search_filter == "") include_3 = 1;
 		else if(search_filter != "" && name.toLowerCase().includes(search_filter.toLowerCase())) include_3 = 1;
@@ -294,12 +304,15 @@ function loadData() {
 			 <td>${id}</td>
 			 <td><div style='color: ${rarity_colors[weapon["Rarity"]-1]}'>${name}</div></td>
 			 <td><div style='color: ${rarity_colors[weapon["Rarity"]-1]}'>${weapon["Rarity"]}</div></td>
-			 <td>${weapon["Attack"]}<div style="color: #42e6ee;">(${parseInt(weapon["Attack"]) + 15})</div></td>
-			 <td>${special}</td>
+			 <td>${weapon["Attack"]}<div style="color: #ff9237;">${parseInt(weapon["Attack"]) + 15}</div></td>
+			 `;
+			 if(WEAPON_TYPE != "LBG" && WEAPON_TYPE != "HBG") row.innerHTML += `<td>${special}</td>`;;
+			 row.innerHTML += `
 			 <td>${weapon["Affinity"]}%</td>
 			 <td>${slots}</td>
-			 <td>${defense}</td>       
+			       
 		 `;
+			if(WEAPON_TYPE != "LBG") row.innerHTML += `<td>${defense}</td>`;
 			//----------------------------------------------------------------------------------------------------
 			//-----WEAPON TYPE------------------------------------------------------------------------------------
 			//----------------------------------------------------------------------------------------------------
@@ -315,8 +328,7 @@ function loadData() {
 					row.innerHTML += `<td>${unique}</td>`;
 			}
 			var sharp = 0;
-			if (WEAPON_TYPE != "LBG" && WEAPON_TYPE != "HBG" && WEAPON_TYPE != "Bow") {
-				
+			if(WEAPON_TYPE != "LBG" && WEAPON_TYPE != "HBG" && WEAPON_TYPE != "Bow") {
 				var modifiers = [1, 10, 100, 1000, 10000, 100000];
 				var sharpness_bar_1_exist = (typeof weapon["Sharpness"]["+1"] !== 'undefined');
 				document.getElementById("sharpness-header").style.display = "";
@@ -327,6 +339,22 @@ function loadData() {
 				}
 			}
 			else document.getElementById("sharpness-header").style.display = "none";
+			
+			var gun_reload = 0;
+			var gun_recoil = 0;
+			var gun_drift = 0;
+			if(WEAPON_TYPE == "LBG" || WEAPON_TYPE == "HBG"){
+				var reload_spds = ["VeryFast", "Fast", "Normal", "Slow"];
+				var recoil_amnts = ["Light", "Weak", "Moderate", "Strong", "Strngest"];
+				var drift_lvls = ["None", "Sml/Right", "Sml/Left", "Lrg/Right", "Lrg/Left"];
+
+				row.innerHTML += `<td>${weapon["Reload"]}</td>`;
+				row.innerHTML += `<td>${weapon["Recoil"]}</td>`;
+				row.innerHTML += `<td>${weapon["Drift"]}</td>`;
+				gun_reload = reload_spds.indexOf(weapon["Reload"]);
+				gun_recoil = recoil_amnts.indexOf(weapon["Recoil"]);
+				gun_drift = drift_lvls.indexOf(weapon["Drift"]);
+			}
 			
 			var bow_charges = ["", "", "", ""];
 			if(WEAPON_TYPE == "Bow"){
@@ -359,6 +387,9 @@ function loadData() {
 				(weapon["Defense"] == null) ? 0 : weapon["Defense"],
 				unique,
 				sharp,
+				gun_reload,
+				gun_recoil,
+				gun_drift,
 				bow_charges[0],
 				bow_charges[1],
 				bow_charges[2],
@@ -424,6 +455,9 @@ function getHeaders(){
 		document.getElementById("defense-header"),
 		document.getElementById("unique-header"),
 		document.getElementById("sharpness-header"),
+		document.getElementById("gun-reload-header"),
+		document.getElementById("gun-recoil-header"),
+		document.getElementById("gun-drift-header"),
 		document.getElementById("bow-0-header"),
 		document.getElementById("bow-1-header"),
 		document.getElementById("bow-2-header"),
@@ -447,7 +481,7 @@ function sortTable(col){
 			sorting[col] ^= 1;
 			for(var i = 0; i < sorting.length; i++) if(i != col && sorting[i] > 0) sorting[col] = 0;
 		}
-		else if(col == 1 || col == 2 || (col == 8 && !(WEAPON_TYPE == "GL"))){
+		else if(col == 1 || col == 2 || (col == 8 && !(WEAPON_TYPE == "GL")) || col == 10 || col == 11 || col == 12){
 			if(sorting[col] > 0) sorting[col]--;
 			else if(sorting[col] == 0) sorting[col] = 2;
 		}
@@ -534,6 +568,10 @@ function filterTable(filter){
 			elem_sts_filter_num = 11;
 			document.getElementById("weapon_table").classList.add("table-view-3row");
 			break;
+		case "LBG": 
+			filter_headers = ["", "", "Ammo 1", "Ammo 1 Lvl", "Ammo 1 RF", "", "Ammo 2", "Ammo 2 Lvl", "Ammo 2 RF", "", "Ammo 3", "", "Ammo 3 RF", "", "Ammo 4", "", "Ammo 4 RF", "Clear", "Reload", "Recoil", "Drift"];
+			elem_sts_filter_num = 0;
+			break;
 		case "LS":
 			document.getElementById("weapon_table").classList.add("table-view-2row");
 			break;
@@ -587,6 +625,18 @@ function filterTable(filter){
 		}
 		if(document.getElementById("HH_effect_dropdown") != null)
 				document.getElementById("HH_effect_dropdown").selectedIndex = 0;
+		for(var i = 1; i <= 4; i++){
+			if(document.getElementById("ammo_"+i+"_dropdown") != null)
+				document.getElementById("ammo_"+i+"_dropdown").selectedIndex = 0;
+			if(document.getElementById("ammo_"+i+"_lvl_dropdown") != null)
+				document.getElementById("ammo_"+i+"_lvl_dropdown").selectedIndex = 0;
+		}
+		if(document.getElementById("reload_dropdown") != null)
+				document.getElementById("reload_dropdown").selectedIndex = 0;
+		if(document.getElementById("recoil_dropdown") != null)
+				document.getElementById("recoil_dropdown").selectedIndex = 0;
+		if(document.getElementById("drift_dropdown") != null)
+				document.getElementById("drift_dropdown").selectedIndex = 0;
 	}
 	var filter_elements = document.getElementById("filters").getElementsByTagName("td");
 	for(var i = 0; i < filter_elements.length; i++){
@@ -670,6 +720,9 @@ function init(){
 		case "Lance":
 			Lance_init();
 			break;
+		case "LBG":
+			LBG_init();
+			break;
 		case "LS":
 			LS_init();
 			break;
@@ -721,6 +774,9 @@ switch(window.location.hash.substring(1)){
 		break;
 	case "Lance":
 		changeWeapon("Lance");
+		break;
+	case "LBG":
+		changeWeapon("LBG");
 		break;
 	case "LS":
 		changeWeapon("LS");

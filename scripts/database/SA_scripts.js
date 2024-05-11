@@ -17,16 +17,16 @@ function SA_init(){
 	var filters = document.getElementById("filters-table");
 	var filter_row_0 = filters.insertRow();
 	filter_row_0.innerHTML = `
-		<td onClick="filterTable('Power Phial')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Power</br>Phial</td>
-		<td onClick="filterTable('Elemental Phial')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Elemental</br>Phial</td>
-		<td onClick="filterTable('Exhaust Phial')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Exhaust</br>Phial</td>
-		<td onClick="filterTable('Poison Phial')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Poison</br>Phial</td>
+		<td onClick="filterTable('Power Phial')" style="color: #c0c0c0; font-size: 10px; width: auto;">Power</br>Phial</td>
+		<td onClick="filterTable('Elemental Phial')" style="color: #c0c0c0; font-size: 10px; width: auto;">Elemental</br>Phial</td>
+		<td onClick="filterTable('Exhaust Phial')" style="color: #c0c0c0; font-size: 10px; width: auto;">Exhaust</br>Phial</td>
+		<td onClick="filterTable('Poison Phial')" style="color: #c0c0c0; font-size: 10px; width: auto;">Poison</br>Phial</td>
 	`;
 	filter_row_0.id = "filter_row_0";
 	var filter_row_1 = filters.insertRow();
 	filter_row_1.innerHTML = `
-		<td onClick="filterTable('Paralysis Phial')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Paralysis</br>Phial</td>
-		<td onClick="filterTable('Dragon Phial')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">Dragon</br>Phial</td>
+		<td onClick="filterTable('Paralysis Phial')" style="color: #c0c0c0; font-size: 10px; width: auto;">Paralysis</br>Phial</td>
+		<td onClick="filterTable('Dragon Phial')" style="color: #c0c0c0; font-size: 10px; width: auto;">Dragon</br>Phial</td>
 	`;
 	filter_row_1.id = "filter_row_1";
 }

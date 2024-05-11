@@ -166,18 +166,18 @@ function Bow_init(){
 		<tr>
 			<td rowspan="5" onClick="filterTable('Final')" style="color: #c0c0c0; font-size: 12px;">Final</br>Form</td>
 			
-			<td onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">None</td>
-			<td onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Fire</td>
-			<td onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Water</td>
-			<td onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Thunder</td>
+			<td onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; width: auto;">None</td>
+			<td onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; width: auto;">Fire</td>
+			<td onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; width: auto;">Water</td>
+			<td onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; width: auto;">Thunder</td>
 			
 			<td rowspan="5" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
 			
 		</tr><tr>
-			<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
-			<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
+			<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; width: auto;">Ice</td>
+			<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; width: auto;">Dragon</td>
 			
-			<td onClick="filterTable('Arc Shot')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+			<td onClick="filterTable('Arc Shot')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Arc Shot:</label><br>
 				<select id="arc_shot_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Arc Shot', this.selectedIndex)">
 					<option>Wide</option>
@@ -186,7 +186,7 @@ function Bow_init(){
 				</select>
 			</td>
 			
-			<td onClick="filterTable('Coating')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+			<td onClick="filterTable('Coating')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Coating:</label><br>
 				<select id="coating_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Coating', this.selectedIndex)">
 					<option>Power</option>
@@ -200,7 +200,7 @@ function Bow_init(){
 			</td>
 			
 		</tr><tr>
-			<td onClick="filterTable('Charge 1')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+			<td onClick="filterTable('Charge 1')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Charge 1:</label><br>
 				<select id="charge_1_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 1', this.selectedIndex)">
 					<option>Rapid</option>
@@ -208,7 +208,7 @@ function Bow_init(){
 					<option>Spread</option>
 				</select>
 			</td>
-			<td onClick="filterTable('Charge 2')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+			<td onClick="filterTable('Charge 2')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Charge 2:</label><br>
 				<select id="charge_2_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 2', this.selectedIndex)">
 					<option>Rapid</option>
@@ -216,7 +216,7 @@ function Bow_init(){
 					<option>Spread</option>
 				</select>
 			</td>
-			<td onClick="filterTable('Charge 3')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+			<td onClick="filterTable('Charge 3')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Charge 3:</label><br>
 				<select id="charge_3_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 3', this.selectedIndex)">
 					<option>Rapid</option>
@@ -224,7 +224,7 @@ function Bow_init(){
 					<option>Spread</option>
 				</select>
 			</td>
-			<td onClick="filterTable('Charge 4')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+			<td onClick="filterTable('Charge 4')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Charge 4:</label><br>
 				<select id="charge_4_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="Bow_setFilter('Charge 4', this.selectedIndex)">
 					<option>Rapid</option>
@@ -249,9 +249,7 @@ function Bow_init(){
 	cell_1.style.width = "100%";
 }
 
-function Bow_terminate(){
-	sorting = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; 
-	
+function Bow_terminate(){	
 	for(var i = 0; i < 4; i++){
 		document.getElementById("bow-"+i+"-header").style.display = "none";
 	}
@@ -260,23 +258,23 @@ function Bow_terminate(){
 		<tr>
 			<td rowspan="5" onClick="filterTable('Final')" style="color: #c0c0c0; font-size: 12px;">Final</br>Form</td>
 			
-			<td onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">None</td>
-			<td onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Fire</td>
-			<td onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Water</td>
-			<td onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Thunder</td>
+			<td id="none_filter" onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; width: auto;">None</td>
+			<td id="fire_filter" onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; width: auto;">Fire</td>
+			<td id="water_filter" onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; width: auto;">Water</td>
+			<td id="thunder_filter" onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; width: auto;">Thunder</td>
 			
 			<td rowspan="5" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
 			
 		</tr><tr>
-			<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
-			<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
-			<td id="poison_filter" onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Poison</td>
-			<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Paralyze</td>				
+			<td id="ice_filter" onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; width: auto;">Ice</td>
+			<td id="dragon_filter" onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; width: auto;">Dragon</td>
+			<td id="poison_filter" onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; width: auto;">Poison</td>
+			<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; width: auto;">Paralyze</td>
 		</tr>
 	`;
 	
-	var horn_melodies = document.getElementById("bow_coatings_header");
-	horn_melodies.parentNode.removeChild(horn_melodies);
-	var horn_melodies = document.getElementById("bow_coatings_body");
-	horn_melodies.parentNode.removeChild(horn_melodies);
+	var bow_coatings_header = document.getElementById("bow_coatings_header");
+	bow_coatings_header.parentNode.removeChild(bow_coatings_header);
+	var bow_coatings_body = document.getElementById("bow_coatings_body");
+	bow_coatings_body.parentNode.removeChild(bow_coatings_body);
 }

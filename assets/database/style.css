@@ -33,19 +33,19 @@ body{
 .weapon-table{
 	overflow-y: scroll;
 	scrollbar-gutter: stable;
-	max-height: calc(60vh - 15px);
+	max-height: calc(60vh - 10px);
 }
 
 .table-view-full{
-	max-height: 80vh;
+	max-height: calc(60vh + 175px);
 }
 
 .table-view-2row{
-	max-height: calc(60vh + 78px);
+	max-height: calc(60vh + 64px);
 }
 
 .table-view-3row{
-	max-height: calc(60vh + 12px);
+	max-height: calc(60vh + 27px);
 }
 
 .weapon-table table{
@@ -126,6 +126,7 @@ body{
 .filters-table{
 	table-layout: fixed;
 	border-spacing: 0;
+	border-collapse: collapse; 
 	width: 100%;
 	background-color: #3A3A3A;
 	max-height: 20vh;
@@ -143,10 +144,11 @@ body{
 }
 
 .filters-table td{
-	padding: 10px 2px;
+	padding: 2px 2px;
 	border: solid 1px #404040;
 	cursor: pointer;
 	width: 32px;
+	height: 32px;
 }
 
 .filters td:hover{
@@ -230,7 +232,8 @@ body{
 }
 
 .info-table th{
-	background-color: #707070;
+	color: #2c86ff;
+	background-color: #202020;
 }
 
 .info-table tr{
@@ -253,7 +256,7 @@ body{
 	cursor: default;
 	overflow-y: auto;
 	scrollbar-gutter: stable;
-	max-height: 100%;
+	max-height: 99%;
 }
 
 .mat-box th, .mat-box td{
@@ -285,6 +288,10 @@ body{
 	border: 1px solid #2A2A2A; 
 }
 
+.ammo-table td{
+	border: 1px solid #404040;
+}
+
 @media only screen and (max-width: 600px){
 	.main{
 		width: 100%;
@@ -292,11 +299,11 @@ body{
 	}
 
 	.weapon-table{
-		max-height: calc(50vh - 64px);
+		max-height: calc(50vh - 60px);
 	}
 	
 	.table-view-full{
-		max-height: 68vh;
+		max-height: calc(50vh + 125px);
 	}
 	
 	.table-view-2row{
@@ -304,7 +311,7 @@ body{
 	}
 
 	.table-view-3row{
-		max-height: calc(50vh - 32px);
+		max-height: calc(50vh - 23px);
 	}
 	
 	.search-bar{
@@ -329,5 +336,14 @@ body{
 	.charge-dropdown{
 		font-size: 8px;
 		width: 100%;
+	}
+	
+	.ammo-table th{
+		font-size: 11px;
+	}
+	
+	.ammo-table td{
+		font-size: 11px;
+		padding-top: 9px;
 	}
 }

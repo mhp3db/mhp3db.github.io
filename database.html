@@ -43,7 +43,7 @@
 				<td onClick="changeWeapon('Lance')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -16px -96px;"></span></center></td>
 				<td onClick="changeWeapon('GL')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -32px -96px;"></span></center></td>
 				<td onClick="changeWeapon('SA')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -96px -96px;"></span></center></td>
-				<td style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -48px -96px; opacity: 0.2"></span></center></td>
+				<td onClick="changeWeapon('LBG')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -48px -96px;"></span></center></td>
 				<td style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -64px -96px; opacity: 0.2"></span></center></td>
 				<td onClick="changeWeapon('Bow')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -80px -96px;"></span></center></td>
 				</tr></table></td>
@@ -52,20 +52,19 @@
 			<tr>
 				<td rowspan="5" onClick="filterTable('Final')" style="color: #c0c0c0; font-size: 12px;">Final</br>Form</td>
 				
-				<td onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">None</td>
-				<td onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Fire</td>
-				<td onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Water</td>
-				<td onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Thunder</td>
+				<td id="none_filter" onClick="filterTable('None')" style="color: #c0c0c0; font-size: 12px; width: auto;">None</td>
+				<td id="fire_filter" onClick="filterTable('Fire')" style="color: #c0c0c0; font-size: 12px; width: auto;">Fire</td>
+				<td id="water_filter" onClick="filterTable('Water')" style="color: #c0c0c0; font-size: 12px; width: auto;">Water</td>
+				<td id="thunder_filter" onClick="filterTable('Thunder')" style="color: #c0c0c0; font-size: 12px; width: auto;">Thunder</td>
 				
 				<td rowspan="5" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
 				
 			</tr><tr>
-				<td onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Ice</td>
-				<td onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Dragon</td>
-				<td id="poison_filter" onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Poison</td>
-				<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; height: 100%; width: auto;">Paralyze</td>
+				<td id="ice_filter" onClick="filterTable('Ice')" style="color: #c0c0c0; font-size: 12px; width: auto;">Ice</td>
+				<td id="dragon_filter" onClick="filterTable('Dragon')" style="color: #c0c0c0; font-size: 12px; width: auto;">Dragon</td>
+				<td id="poison_filter" onClick="filterTable('Poison')" style="color: #c0c0c0; font-size: 12px; width: auto;">Poison</td>
+				<td id="para_filter" onClick="filterTable('Paralyze')" style="color: #c0c0c0; font-size: 12px; width: auto;">Paralyze</td>
 			</tr>
-
 		</tbody>
 		</table>
 		</div>
@@ -83,12 +82,15 @@
 					<th onClick="sortTable(7)" id="defense-header">Defense <i class="fa fa-fw fa-sort"></i></th>
 					<th onClick="sortTable(8)" id="unique-header" style="display: none">-</th>
 					<th onClick="sortTable(9)" id="sharpness-header" style="display: none">Sharpness <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(10)" id="bow-0-header" style="display: none">-</th>
-					<th onClick="sortTable(11)" id="bow-1-header" style="display: none">-</th>
-					<th onClick="sortTable(12)" id="bow-2-header" style="display: none">-</th>
-					<th onClick="sortTable(13)" id="bow-3-header" style="display: none">-</th>
-					<th onClick="sortTable(14)" id="crafting-header">Crafting Price <i class="fa fa-fw fa-sort"></i></th>
-					<th onClick="sortTable(15)" id="upgrade-header">Upgrade Price <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(10)" id="gun-reload-header" style="display: none">-</th>
+					<th onClick="sortTable(11)" id="gun-recoil-header" style="display: none">-</th>
+					<th onClick="sortTable(12)" id="gun-drift-header" style="display: none">-</th>
+					<th onClick="sortTable(13)" id="bow-0-header" style="display: none">-</th>
+					<th onClick="sortTable(14)" id="bow-1-header" style="display: none">-</th>
+					<th onClick="sortTable(15)" id="bow-2-header" style="display: none">-</th>
+					<th onClick="sortTable(16)" id="bow-3-header" style="display: none">-</th>
+					<th onClick="sortTable(17)" id="crafting-header">Crafting Price <i class="fa fa-fw fa-sort"></i></th>
+					<th onClick="sortTable(18)" id="upgrade-header">Upgrade Price <i class="fa fa-fw fa-sort"></i></th>
 			    </tr>
 			</thead>
 			<tbody id="weapon_info"></tbody>
@@ -155,6 +157,8 @@
 <script src="scripts/database/HH_scripts.js"></script>
 <script src="scripts/database/Lance_data.js"></script>
 <script src="scripts/database/Lance_scripts.js"></script>
+<script src="scripts/database/LBG_data.js"></script>
+<script src="scripts/database/LBG_scripts.js"></script>
 <script src="scripts/database/LS_data.js"></script>
 <script src="scripts/database/LS_scripts.js"></script>
 <script src="scripts/database/SA_data.js"></script>

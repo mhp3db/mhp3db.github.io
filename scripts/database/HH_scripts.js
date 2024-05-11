@@ -105,10 +105,10 @@ function HH_init(){
 	var filters = document.getElementById("filters-table");
 	var filter_row_0 = filters.insertRow();
 	filter_row_0.innerHTML = `
-		<td style="background-color: transparent; font-size: 12px; height: 100%; width: auto; cursor: default; padding: 0 0;">
+		<td style="background-color: transparent; font-size: 12px; width: auto; cursor: default; padding: 0 0;">
 			<table class="filters-table" style="table-layout: unset"><tr>
-				<td onClick="HH_setFilter('WP', 'W')"><img src="assets/database/notes/note_W.png"></td>
-				<td onClick="HH_setFilter('WP', 'P')"><img src="assets/database/notes/note_P.png"></td>
+				<td style="border: none; border-right: 1px solid #404040" onClick="HH_setFilter('WP', 'W')"><img src="assets/database/notes/note_W.png"></td>
+				<td style="border: none" onClick="HH_setFilter('WP', 'P')"><img src="assets/database/notes/note_P.png"></td>
 			</tr></table>
 		</td>
 		<td onClick="filterTable('R')"><img src="assets/database/notes/note_R.png"></td>
@@ -122,7 +122,7 @@ function HH_init(){
 		<td onClick="filterTable('C')"><img src="assets/database/notes/note_C.png"></td>
 		<td onClick="filterTable('Y')"><img src="assets/database/notes/note_Y.png"></td>
 		<td onClick="filterTable('O')"><img src="assets/database/notes/note_O.png"></td>
-		<td onClick="filterTable('Effect')" style="color: #c0c0c0; font-size: 10px; height: 100%; width: auto;">
+		<td onClick="filterTable('Effect')" style="color: #c0c0c0; font-size: 10px; width: auto;">
 				<label>Effect:</label><br>
 				<select id="HH_effect_dropdown" class="charge-dropdown" onclick="event.stopPropagation();" onchange="HH_setFilter('Effect', this.selectedIndex)">
 				</select>

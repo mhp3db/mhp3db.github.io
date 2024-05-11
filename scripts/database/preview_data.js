@@ -1460,7 +1460,123 @@ var preview_data = {
 		]
 	},
 	"LBG": {
-		
+		"0": [
+			"Old Yukumo Crossbow",
+			"Yukumo Crossbow",
+			"Yukumo Crossbow+"
+		],
+		"1": [
+			"Jaggid Fire",
+			"Jaggid Fire+",
+			"Bandit Fire",
+			"Bandit's Rage",
+		],
+		"2": [
+			"Barro Barrel",
+			"Barro Barrel+",
+			"Barrozooka"
+		],
+		"3": [
+			"Aurora Flare",
+			"Avalauncher"
+		],
+		"4": [
+			"Royal Launcher",
+			"Royal Turrent",
+			"Royal Cataract",
+			"Royal Inundation",
+			"Royal Noah"
+		],
+		"5": [
+			"Cross Bowgun",
+			"Cross Bowgun+",
+			"Cross Blitz"
+		],
+		"6": [
+			"Valkyrie Fire",
+			"Valkyrie Flame",
+			"Valkyrie Blaze"
+		],
+		"7": [
+			"Blossomayhem"
+		],
+		"8": [
+			"Poison Stinger",
+			"Poison Stinger+",
+			"Poison Aftermath",
+			"Immortal Shackle",
+		],
+		"9": [
+			"Bloodthirsty Binder",
+			"Crimson Seeker"
+		],
+		"10": [
+			"Blizzard Cannon",
+			"Blizzard Volley",
+			"Tabula Blizzara"
+		],
+		"11": [
+			"Hunter's Rifle",
+			"Sniper Shot"
+		],
+		"12": [
+			"Gourd Shot",
+			"Teasel Shot",
+			"Crookneck Shot"
+		],
+		"13": [
+			"Demon's Isle",
+			"Demon's Island",
+			"God's Isle",
+			"God's Island",
+		],
+		"14": [
+			"Yukumo Rifle",
+			"Yukumo Bullet Rain"
+		],
+		"15": [
+			"Hidden Eye",
+			"Hidden Eye+",
+			"Night Owl"
+		],
+		"16": [
+			"Rathling Gun",
+			"Rathling Gun+",
+			"Rathling Doombringer",
+			"Rathling Phoenix",
+		],
+		"17": [
+			"Usurper's Crime",
+			"Despot's Wildfire"
+		],
+		"18": [
+			"Tigrex Tank",
+			"Tigrex Wargun"
+		],
+		"19": [
+			"Black Tigrex Tank",
+			"Black Tigrex Panzer"
+		],
+		"20": [
+			"Durambarrel",
+			"Durambarrel+",
+			"Taurambarrel",
+			"Aldebaran Dreadgun",
+		],
+		"21": [
+			"Kettleblower",
+			"Kettleblower Deluxe"
+		],
+		"22": [
+			"Devil's Grin",
+			"Devil's Madness"
+		],
+		"23": [
+			"Ukanlos Growl"
+		],
+		"24": [
+			"Evil Flash Flood"
+		]
 	},
 	"HBG": {
 		

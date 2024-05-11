@@ -6,8 +6,9 @@ function SnS_init(){
 	
 	var filters = document.getElementById("filters-table");
 	var filter_row = filters.insertRow();
+	var border_color = "1px solid #404040";
 	filter_row.innerHTML = `
-		<td onClick="filterTable('Sleep')" style="color: #c0c0c0; height: 100%; width: auto;">Sleep</td>	
+		<td onClick="filterTable('Sleep')" style="color: #c0c0c0; width: auto;">Sleep</td>
 	`;
 	filter_row.id = "filter_row";
 }

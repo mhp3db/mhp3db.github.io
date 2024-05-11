@@ -5,6 +5,10 @@ var sprite_data = {
 			"Lagombi Claw+","Barioth Claw","Barioth Claw+","Ukanlos Claw",
 			"Amatsu Horn","Amatsu Claw"
 		],
+		"0, 48": [
+			"Normal S","Pierce S","Pellet S","Crag S",
+			"Clust S","Slicing S"
+		],
 		"0, 80": [
 			"S.Rath Carapace","Barioth Shell","Barioth Carapace","Ukanlos Shell",
 			"Amatsu Shell"
@@ -77,6 +81,9 @@ var sprite_data = {
 		"0, 16": [
 			"G.Baggi Claw","G.Baggi Claw+","J.Barroth Claw+","G.Agnak Claw+"
 		],
+		"0, 48": [
+			"Water S","Sleep S"
+		],
 		"0, 80": [
 			"J.Barr Carapace","G.Agnak Carapace"
 		],
@@ -130,6 +137,9 @@ var sprite_data = {
 		],
 	},
 	"PAL_3": {
+		"0, 48": [
+			"Paint S"
+		],
 		"32, 48": [
 			"Paint Coating"
 		],
@@ -150,6 +160,9 @@ var sprite_data = {
 		"0, 16": [
 			"Bird Wyvern Fang","G.Jaggi Claw","G.Jaggi Claw+","P.Ludroth Claw+",
 			"Alatreon Talon","Brkn Skypiercer","Skypiercer"
+		],
+		"0, 48": [
+			"Poison S"
 		],
 		"0, 80": [
 			"Alatreon Scute"
@@ -185,6 +198,9 @@ var sprite_data = {
 	"PAL_5": {
 		"0, 16": [
 			"G.Narga Fang+","Duramboros Horn","Duramboros Horn+"
+		],
+		"0, 48": [
+			"Recov S"
 		],
 		"0, 80": [
 			"Rathian Shell", "Rathian Carapace", "Duramboros Shell", "Duram Carapace"
@@ -229,6 +245,9 @@ var sprite_data = {
 			"Armortalon","Anteka Antlers","Sharpened Fang","Wroggi Fang",
 			"Barroth Claw","Barroth Claw+","Amber Tusks","Amber Tusks+",
 			"S.Barioth Claw+"
+		],
+		"0, 48": [
+			"Armor S"
 		],
 		"0, 80": [
 			"Barroth Shell","Barroth Carapace","S.Bari Carapace"
@@ -308,6 +327,9 @@ var sprite_data = {
 			"Powertalon","Volvidon Claw","Volvidon Claw+","Gigginox Claw",
 			"Gigginox Claw+","Rath Talon","Agnaktor Claw","Agnaktor Claw+"
 		],
+		"0, 48": [
+			"Flaming S","Dragon S","Demon S","Tranq S"
+		],
 		"0, 80": [
 			"Volvidon Shell","Volvi Carapace","Rathalos Shell","Rath Carapace",
 			"Agnaktor Shell","Agnak Carapace"
@@ -365,6 +387,9 @@ var sprite_data = {
 		"0, 16": [
 			"Bnahabra Spine","R.Ludroth Claw","R.Ludroth Claw+","Tigrex Claw",
 			"Tigrex Claw+","Tigrex Fang","Tigrex Fang+"
+		],
+		"0, 48": [
+			"Thunder S","Para S"
 		],
 		"0, 80": [
 			"Bnahabra Shell", "Bnaha Carapace", "G.Rath Carapace", "Uragaan Shell",
@@ -448,6 +473,9 @@ var sprite_data = {
 		"0, 16": [
 			"Kelbi Horn","B.Giggi Claw+","Indigo Tusks+","Sturdy Fang",
 			"Sturdy Fang+"
+		],
+		"0, 48": [
+			"Freeze S","Exhaust S"
 		],
 		"0, 80": [
 			"Arzuros Shell","Arzuros Carapace","S.Urag Carapace","Mohran Shell",
