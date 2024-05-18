@@ -23,6 +23,13 @@ body{
 	margin: auto;
 }
 
+.main-charm{
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+	margin: auto;
+}
+
 .selection{
 	width: 16px;
 	height: 16px;
@@ -298,8 +305,17 @@ body{
 		left: 0;
 	}
 
+	.main-charm{
+		width: 100%;
+		left: 0;
+	}
+
 	.weapon-table{
 		max-height: calc(50vh - 60px);
+	}
+	
+	.charm-table{
+		width: 100%;
 	}
 	
 	.table-view-full{
@@ -335,7 +351,7 @@ body{
 	
 	.charge-dropdown{
 		font-size: 8px;
-		width: 100%;
+		
 	}
 	
 	.ammo-table th{

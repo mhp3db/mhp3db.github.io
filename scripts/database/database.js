@@ -29,6 +29,12 @@ function changeWeapon(type){
 		case "GS":
 			GS_terminate();
 			break;
+		case "HBG":
+			HBG_terminate();
+			break;
+		case "LBG":
+			LBG_terminate();
+			break;
 		case "HH":
 			HH_terminate();
 			break;
@@ -68,17 +74,7 @@ function createSharpnessBar(sharpness_0, sharpness_1){
     return bar;
 }
 
-function getWeaponTree(currentName, tree = []){
-	tree.push(currentName);
-	for(var name in data){
-		var weapon = data[name];
-		if(weapon["UpgradesTo"] != null && weapon["UpgradesTo"].includes(currentName)){
-			getWeaponTree(name, tree);
-			break;
-		}
-	}
-	return tree;
-}
+
 
 function getSprite(material){
 	for(var key in sprite_data){
@@ -114,9 +110,7 @@ function showMoreInfo(event) {
 	var crafting_materials = weapon["Craft"];
 	var upgrade_materials = weapon["Upgrade"];
 	var table = `<div class="mat-box"><table><thead><tr><th></th><th>Material</th><th>Req</th></tr></thead><tbody>`;
-	var table_0 = document.createElement("table");
-	table_0.style.border = "none";
-	table_0.style.borderBottom = "1px solid #c0c0c0";
+	
 
 	var craftable = typeof crafting_materials != "undefined";
 	var upgradeable = typeof upgrade_materials != "undefined";
@@ -162,37 +156,7 @@ function showMoreInfo(event) {
 		<tr><td>None</td></tr></tbody></table></div>
 	`;
 	
-	
-	
-	var tree = getWeaponTree(active_row.id).reverse();
-	var weapon_tree = document.getElementById("weapon_tree");
-	weapon_tree.classList.add("weapon-table");
-	while (weapon_tree.firstChild) weapon_tree.removeChild(weapon_tree.firstChild);
-	for (var i = 0; i < tree.length; i++) {
-		var row_0 = table_0.insertRow();
-		row_0.id = tree[i];
-		row_0.addEventListener("click", function(event) {
-			showMoreInfo(event, data);
-		});
-		if (tree[i] == active_row.id) row_0.classList.add("active-row");
-		else row_0.classList.remove("active-row");
-		var cell_0 = row_0.insertCell();
-		cell_0.innerHTML = "";
-		if (data[tree[i]]["Craft"]) {
-			cell_0.innerHTML += `<span style="float: right">Craftable</span>`;
-		} else {
-			cell_0.innerHTML += `<span style="float: right">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			</span>`;
-		}
-
-		cell_0.innerHTML += `<span style="float: left">${(i+1)}</span><span style="display: inline-block; text-align: left; width: 150px;">${tree[i]}</span>`;
-
-	}
-	
-
-
-	weapon_tree.appendChild(table_0);
+	weaponTree();
 	weaponPreview();
 	document.getElementById("materials-table").style.display = "";
 	document.getElementById("overlay").style.display = "block";
@@ -204,6 +168,9 @@ function showMoreInfo(event) {
 	switch (WEAPON_TYPE) {
 		case "Bow":
 			Bow_showMoreInfo(event);
+			break;
+		case "HBG":
+			HBG_showMoreInfo(event);
 			break;
 		case "HH":
 			HH_showMoreInfo(event);
@@ -252,6 +219,9 @@ function loadData() {
 				break;
 			case "GL":
 				include_2 = GL_filterShells(weapon);
+				break;
+			case "HBG":
+				include_2 = HBG_filterShots(weapon);
 				break;
 			case "HH":
 				include_2 = HH_filterNotes(weapon);
@@ -361,7 +331,7 @@ function loadData() {
 				for(var i = 0; i < 4; i++){
 					var charge = (typeof weapon["Charge"][i] == 'undefined') ? "---" : weapon["Charge"][i];
 					if(charge[0] == "+"){
-						row.innerHTML += `<td style="color: #25ff25">${charge.substring(1)}</td>`;
+						row.innerHTML += `<td style="color: #25ff25" title="Requires Load Up" tabindex="0">${charge.substring(1)}</td>`;
 					}
 					else row.innerHTML += `<td>${charge}</td>`;
 					
@@ -560,6 +530,10 @@ function filterTable(filter){
 		case "Hammer":
 			document.getElementById("weapon_table").classList.add("table-view-2row");
 			break;
+		case "HBG": 
+			filter_headers = ["", "", "Ammo 1", "Ammo 1 Lvl", "Ammo 1 CF", "", "Ammo 2", "Ammo 2 Lvl", "Ammo 2 CF", "", "Ammo 3", "", "Ammo 3 CF", "", "Ammo 4", "", "Ammo 4 CF", "Clear", "Reload", "Recoil", "Drift"];
+			elem_sts_filter_num = 0;
+			break;
 		case "HH": 
 			filter_headers = ["", "None", "Fire" ,"Water", "Thunder", "Clear", "Ice", "Dragon", "Poison", "Paralyze", "", "W", "P", "R", "B", "G", "C", "Y", "O", "Effect"];
 			break;
@@ -714,6 +688,9 @@ function init(){
 		case "Hammer":
 			Hammer_init();
 			break;
+		case "HBG":
+			HBG_init();
+			break;
 		case "HH":
 			HH_init();
 			break;	
@@ -768,6 +745,9 @@ switch(window.location.hash.substring(1)){
 		break;
 	case "Hammer":
 		changeWeapon("Hammer");
+		break;
+	case "HBG":
+		changeWeapon("HBG");
 		break;
 	case "HH":
 		changeWeapon("HH");

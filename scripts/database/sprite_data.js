@@ -221,6 +221,9 @@ var sprite_data = {
 			"Rathian Spike", "Rathian Spike+", "G.Narga Razor+", "Duramboros Hump",
 			"Duram Tailcase", "Duram Tailcase+"
 		],
+		"48, 64": [
+			"Bowgun Codex"
+		],
 		"64, 16": [
 			"Duram Tailbone","Duram Sacrum"
 		],

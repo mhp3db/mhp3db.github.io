@@ -1,3 +1,27 @@
+function openHelp(page){
+	var pages = 5;
+	var tutorial = document.getElementById("tutorial");
+	tutorial.innerHTML = "";
+	if(page > 0) tutorial.innerHTML += `<button class="arrow" style="left: 0px;" onclick="openHelp(${page-1})"><span class="left-arrow">&#9664;</span></button>`;
+	if(page < pages-1) tutorial.innerHTML += `<button class="arrow" style="right: 0px;" onclick="openHelp(${page+1})"> &#9654;</button>`;
+	tutorial.innerHTML += `<div style="font-size: 16px; color: #ffffff; text-align: center;">How to use</div>`;
+	if(page == 0) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">1) Put some Kelbi Horns in your item bag and save at your bed.</div>`;
+	if(page == 1) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">2) Talk to the Village Chief.</div>`;
+	if(page == 2) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">3) Accept the quest "Prescription Pick-Up".</div>`;
+	if(page == 3) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">4) Turn in Kelbi Horns and check rewards."</div>`;
+	if(page == 4) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">5) Enter rewards into online tool and view results. Reset the game if not in your desired table."</div>`;
+	tutorial.innerHTML += `<div class="tutorial-image"><img src="assets/rewards/tutorial/Step_${page}.png"></div>`;
+	tutorial.innerHTML += `<div class="tutorial-page-num">${page+1} / ${pages}</div>`;
+	
+	document.getElementById("help-window-overlay").style.display = "block";
+	document.getElementById("help-window").style.display = "block";
+}
+
+function closeHelp(){
+	document.getElementById("help-window-overlay").style.display = "none";
+  document.getElementById("help-window").style.display = "none";
+}
+
 function getItem(reward){
 	const filter = reward.match(/(.+?)\s*x\s*(\d+)/i);
 	if(filter){
@@ -164,6 +188,13 @@ function update(){
 		document.getElementById("reward-table").appendChild(num);
 		document.getElementById("reward-table").appendChild(list);	
 	}
+	
+	var help = document.createElement("button");
+	help.textContent = "Help";
+	help.classList.add("help");
+	help.onclick = function(){openHelp(0);}
+	document.getElementById("reward-table").appendChild(help);
+	
 	var re = document.createElement("button");
 	re.textContent = "Reset";
 	re.classList.add("reset");

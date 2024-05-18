@@ -1579,7 +1579,128 @@ var preview_data = {
 		]
 	},
 	"HBG": {
-		
+		"0": [
+			"Old Yukumo Ballista",
+			"Yukumo Ballista",
+			"Yukumo Ballista+"
+		],
+		"1": [
+			"Arzuros Gun",
+			"Arzuros Gun+",
+			"Arzuros Rumblegun",
+			"Arzuros Fishergun",
+		],
+		"2": [
+			"Spheniscine Slayer",
+			"Spheniscine Enslaver",
+			"Spheniscine Ruler",
+			"Spheniscine Overlord",
+		],
+		"3": [
+			"Queen's Longfire",
+			"Queen's Farflier",
+			"Queen's Scionfire",
+			"Queen's Deityfire",
+		],
+		"4": [
+			"Bone Blaster",
+			"Bone Shooter+",
+			"Bone Buster"
+		],
+		"5": [
+			"Tropeco Gun",
+			"Tropeco Flambogun",
+			"Pecopious Gun"
+		],
+		"6": [
+			"Pecopious Thunder",
+			"Paco Pico Peco"
+		],
+		"7": [
+			"Type 46 Gunflage I",
+			"Type 46 Gunflage II",
+			"Type 46 Gunflage III",
+			"Nibelflage Prototype",
+		],
+		"8": [
+			"Carrozza Bazooka",
+			"Queen's Carrozza",
+			"Cendrillon"
+		],
+		"9": [
+			"Wishing Star",
+			"Meteorite"
+		],
+		"10": [
+			"Great Meteor"
+		],
+		"11": [
+			"Yukumo Heavy Cannon",
+			"Yukumo Cannon"
+		],
+		"12": [
+			"Usurper's Tremor",
+			"Despot's Paroxysm"
+		],
+		"13": [
+			"Hidden Gambit",
+			"Baleful Night"
+		],
+		"14": [
+			"Virnar Heavy Rifle",
+			"Sinister Midnight"
+		],
+		"15": [
+			"Dual Threat",
+			"Dual Threat+",
+			"Diablazooka"
+		],
+		"16": [
+			"Nero's Blazooka"
+		],
+		"17": [
+			"Tigrex Howl",
+			"Tigrex Howl+",
+			"Tigrex Skull"
+		],
+		"18": [
+			"Agnaboom",
+			"Agnablaster",
+			"Agna Hellblazer"
+		],
+		"19": [
+			"Avel Agnagun"
+		],
+		"20": [
+			'Aquamatic "Needler"',
+			'Aquamatic "Firelash"',
+			'Aquamatic "Ashmaker"'
+		],
+		"21": [
+			"Jhen Cannon",
+			"Jhen Dracannon",
+			"Prosperity Dracannon"
+		],
+		"22": [
+			"Carbalite Cannon",
+			"Meteor Cannon"
+		],
+		"23": [
+			"Gigant Launcher",
+			"Gigant Cannon"
+		],
+		"24": [
+			"Akantor Destroyer"
+		],
+		"25": [
+			"Ukanlos Roar"
+		],
+		"26": [
+			"Chaos Wing"
+		],
+		"27": [
+			"Evil Solstice Shower"
+		]
 	},
 	"Bow": {
 		"0": [

@@ -21,8 +21,9 @@ function Bow_showMoreInfo(event){
 					<td style="width: auto">
 						${getSprite(coating_list[i])}
 					</td>
-					<td style="width: auto; text-align: left; color: #25ff25" class="mat-name">
-						${coating_list[i]}+
+					<td style="width: auto; text-align: left" class="mat-name">
+						${coating_list[i]}
+						<span style="color: #2c86ff">(+)</span>
 					</td>
 				`;
 			}
@@ -52,8 +53,9 @@ function Bow_showMoreInfo(event){
 						<td style="width: auto">
 							${getSprite(coating_list[i+1])}
 						</td>
-						<td style="width: auto; text-align: left; color: #25ff25" class="mat-name">
-							${coating_list[i+1]}+
+						<td style="width: auto; text-align: left" class="mat-name">
+							${coating_list[i+1]}
+							<span style="color: #2c86ff">(+)</span>
 						</td>
 					`;
 				}

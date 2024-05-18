@@ -26,7 +26,7 @@
 <div id="navbar" class="navbar"></div>
 <div id="overlay" class="overlay" onClick="hideInfo()"></div>
 <div id="root">
-	<div class="main">
+	<div id="main" class="main">
 		<div class="filters">
 		<table id="filters-table" class="filters-table">
 		<thead>
@@ -44,7 +44,7 @@
 				<td onClick="changeWeapon('GL')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -32px -96px;"></span></center></td>
 				<td onClick="changeWeapon('SA')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -96px -96px;"></span></center></td>
 				<td onClick="changeWeapon('LBG')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -48px -96px;"></span></center></td>
-				<td style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -64px -96px; opacity: 0.2"></span></center></td>
+				<td onClick="changeWeapon('HBG')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -64px -96px;"></span></center></td>
 				<td onClick="changeWeapon('Bow')" style="padding-top: 0; padding-bottom: 0; height: 24px; width: auto;"><center><span class="selection" style="background-position: -80px -96px;"></span></center></td>
 				</tr></table></td>
 			</tr>
@@ -127,7 +127,7 @@
 					<td id="upgrade_materials" class="info-table" style="border-bottom: 1px solid #c0c0c0"></td>
 				</tr>
 				<tr>
-					<th colspan="2">Weapon Tree</th>
+					<th colspan="2">Weapon Tree (Previous)</th>
 				</tr>
 				<tr>
 					<td colspan="2" id="weapon_tree"></td>
@@ -139,6 +139,8 @@
 	<a id="footer" class="footer-block"></div>
 </div>
 <script src="scripts/navmenu.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="scripts/database/weapon_tree.js"></script>
 <script src="scripts/database/preview_data.js"></script>
 <script src="scripts/database/weapon_preview.js"></script>
 <script src="scripts/database/sprite_data.js"></script>
@@ -153,6 +155,8 @@
 <script src="scripts/database/GS_scripts.js"></script>
 <script src="scripts/database/Hammer_data.js"></script>
 <script src="scripts/database/Hammer_scripts.js"></script>
+<script src="scripts/database/HBG_data.js"></script>
+<script src="scripts/database/HBG_scripts.js"></script>
 <script src="scripts/database/HH_data.js"></script>
 <script src="scripts/database/HH_scripts.js"></script>
 <script src="scripts/database/Lance_data.js"></script>
