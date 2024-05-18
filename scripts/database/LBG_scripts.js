@@ -254,7 +254,7 @@ function LBG_init(){
 						</select>
 					</td></tr>
 					
-					<tr><td onClick="filterTable('Ammo 1 RF')" style="border: none; color: #c0c0c0; font-size: 10px;  width: auto;">Rapid Fire</td></tr>
+					<tr><td onClick="filterTable('Ammo 1 RF')" style="border: none; color: #c0c0c0; font-size: 10px;  width: auto;">Rapid<br>Fire</td></tr>
 				</table>
 			</td>
 			
@@ -279,7 +279,7 @@ function LBG_init(){
 					</select>
 				</td></tr>
 				
-				<tr><td onClick="filterTable('Ammo 2 RF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Rapid Fire</td></tr>
+				<tr><td onClick="filterTable('Ammo 2 RF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Rapid<br>Fire</td></tr>
 				</table>
 			</td>
 			
@@ -298,7 +298,7 @@ function LBG_init(){
 					
 					<tr><td style="border: none; cursor: default; background-color: transparent;"></td></tr>
 					
-					<tr><td onClick="filterTable('Ammo 3 RF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Rapid Fire</td></tr>
+					<tr><td onClick="filterTable('Ammo 3 RF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Rapid<br>Fire</td></tr>
 				</table>
 			</td>
 			
@@ -317,7 +317,7 @@ function LBG_init(){
 			
 					<tr><td style="border: none; cursor: default; background-color: transparent;"></td></tr>
 					
-					<tr><td onClick="filterTable('Ammo 4 RF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Rapid Fire</td>	
+					<tr><td onClick="filterTable('Ammo 4 RF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Rapid<br>Fire</td>	
 				</table>
 				<td rowspan="5" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
 			</td>

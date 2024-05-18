@@ -255,7 +255,7 @@ function HBG_init(){
 						</select>
 					</td></tr>
 					
-					<tr><td onClick="filterTable('Ammo 1 CF')" style="border: none; color: #c0c0c0; font-size: 10px;  width: auto;">Crouch Fire</td></tr>
+					<tr><td onClick="filterTable('Ammo 1 CF')" style="border: none; color: #c0c0c0; font-size: 10px;  width: auto;">Crouch<br>Fire</td></tr>
 				</table>
 			</td>
 			
@@ -280,7 +280,7 @@ function HBG_init(){
 					</select>
 				</td></tr>
 				
-				<tr><td onClick="filterTable('Ammo 2 CF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Crouch Fire</td></tr>
+				<tr><td onClick="filterTable('Ammo 2 CF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Crouch<br>Fire</td></tr>
 				</table>
 			</td>
 			
@@ -299,7 +299,7 @@ function HBG_init(){
 					
 					<tr><td style="border: none; cursor: default; background-color: transparent;"></td></tr>
 					
-					<tr><td onClick="filterTable('Ammo 3 CF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Crouch Fire</td></tr>
+					<tr><td onClick="filterTable('Ammo 3 CF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Crouch<br>Fire</td></tr>
 				</table>
 			</td>
 			
@@ -318,7 +318,7 @@ function HBG_init(){
 			
 					<tr><td style="border: none; cursor: default; background-color: transparent;"></td></tr>
 					
-					<tr><td onClick="filterTable('Ammo 4 CF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Crouch Fire</td>	
+					<tr><td onClick="filterTable('Ammo 4 CF')" style="border: none; color: #c0c0c0; font-size: 10px; width: auto;">Crouch<br>Fire</td>	
 				</table>
 				<td rowspan="5" onClick="filterTable('Clear')" style="color: #c0c0c0; font-size: 12px;">Clear</td>
 			</td>
