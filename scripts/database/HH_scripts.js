@@ -155,6 +155,12 @@ function HH_init(){
 	}	
 }
 
+function HH_clearFilters(){
+	if(document.getElementById("HH_effect_dropdown") != null)
+		document.getElementById("HH_effect_dropdown").selectedIndex = 0;
+	HH_filtered_effect = "Abnormal Status Negated";
+}
+
 function HH_terminate(){
 	var filter_row_0 = document.getElementById("filter_row_0");
 	filter_row_0.parentNode.removeChild(filter_row_0);

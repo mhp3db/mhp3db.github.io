@@ -251,6 +251,21 @@ function Bow_init(){
 	cell_1.style.width = "100%";
 }
 
+function Bow_clearFilters(){
+	if(document.getElementById("arc_shot_dropdown") != null)
+			document.getElementById("arc_shot_dropdown").selectedIndex = 0;
+	if(document.getElementById("coating_dropdown") != null)
+			document.getElementById("coating_dropdown").selectedIndex = 0;
+	for(var i = 1; i <= 4; i++){
+		if(document.getElementById("charge_"+i+"_dropdown") != null)
+			document.getElementById("charge_"+i+"_dropdown").selectedIndex = 0;	
+	}
+	
+	arc_shot_filter = "Wide";
+	coating_filter = "Power Coating";
+	charge_filters = ["Rapid", "Rapid", "Rapid", "Rapid"];
+}
+
 function Bow_terminate(){	
 	for(var i = 0; i < 4; i++){
 		document.getElementById("bow-"+i+"-header").style.display = "none";

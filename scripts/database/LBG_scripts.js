@@ -372,6 +372,24 @@ function LBG_init(){
 	cell_1.style.width = "100%";
 }
 
+function LBG_clearFilters(){
+	for(var i = 1; i <= 4; i++){
+		if(document.getElementById("ammo_"+i+"_dropdown") != null)
+			document.getElementById("ammo_"+i+"_dropdown").selectedIndex = 0;
+		if(document.getElementById("ammo_"+i+"_lvl_dropdown") != null)
+			document.getElementById("ammo_"+i+"_lvl_dropdown").selectedIndex = 0;
+	}
+	if(document.getElementById("reload_dropdown") != null)
+			document.getElementById("reload_dropdown").selectedIndex = 0;
+	if(document.getElementById("recoil_dropdown") != null)
+			document.getElementById("recoil_dropdown").selectedIndex = 0;
+	if(document.getElementById("drift_dropdown") != null)
+			document.getElementById("drift_dropdown").selectedIndex = 0;
+	ammo_filters = ["Normal S", "Recov S", "Flaming S", "Tranq S"];
+	ammo_lvl_filters = [0, 0];
+	gun_param_filters = ["VeryFast", "Light", "None"];
+}
+
 function LBG_terminate(){	
 	document.getElementById("elem_sts-header").style.display = "";
 	document.getElementById("defense-header").style.display = "";

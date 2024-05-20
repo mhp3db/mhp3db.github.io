@@ -589,28 +589,10 @@ function filterTable(filter){
 		search_filter = "";
 		if(document.getElementById("search") != null)
 				document.getElementById("search").value = "";
-		if(document.getElementById("arc_shot_dropdown") != null)
-				document.getElementById("arc_shot_dropdown").selectedIndex = 0;
-		if(document.getElementById("coating_dropdown") != null)
-				document.getElementById("coating_dropdown").selectedIndex = 0;
-		for(var i = 1; i <= 4; i++){
-			if(document.getElementById("charge_"+i+"_dropdown") != null)
-				document.getElementById("charge_"+i+"_dropdown").selectedIndex = 0;	
-		}
-		if(document.getElementById("HH_effect_dropdown") != null)
-				document.getElementById("HH_effect_dropdown").selectedIndex = 0;
-		for(var i = 1; i <= 4; i++){
-			if(document.getElementById("ammo_"+i+"_dropdown") != null)
-				document.getElementById("ammo_"+i+"_dropdown").selectedIndex = 0;
-			if(document.getElementById("ammo_"+i+"_lvl_dropdown") != null)
-				document.getElementById("ammo_"+i+"_lvl_dropdown").selectedIndex = 0;
-		}
-		if(document.getElementById("reload_dropdown") != null)
-				document.getElementById("reload_dropdown").selectedIndex = 0;
-		if(document.getElementById("recoil_dropdown") != null)
-				document.getElementById("recoil_dropdown").selectedIndex = 0;
-		if(document.getElementById("drift_dropdown") != null)
-				document.getElementById("drift_dropdown").selectedIndex = 0;
+		HH_clearFilters();
+		LBG_clearFilters();
+		HBG_clearFilters();
+		Bow_clearFilters();	
 	}
 	var filter_elements = document.getElementById("filters").getElementsByTagName("td");
 	for(var i = 0; i < filter_elements.length; i++){
