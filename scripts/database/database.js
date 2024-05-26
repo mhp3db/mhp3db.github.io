@@ -1,4 +1,6 @@
 var WEAPON_TYPE = "GS";
+var anchor_weapon = "";
+var selection_list = ["GS", "LS", "SnS", "DB", "Hammer", "HH", "Lance", "GL", "SA", "LBG", "HBG", "Bow"];
 var data = null;
 var sorting = []; 
 var filters = [[], []];
@@ -54,7 +56,7 @@ function changeWeapon(type){
 	document.getElementById("weapon_table").classList.remove("table-view-2row");
 	document.getElementById("weapon_table").classList.remove("table-view-3row");
 	WEAPON_TYPE = type;
-	init();
+	main();
 	document.getElementById("sidenav").style.width = "0";
 }
 
@@ -95,8 +97,9 @@ function getSprite(material){
 
 function showMoreInfo(event) {
 	var id = event.currentTarget.id;
-	for (var i = 0; i < rows_list.length; i++)
+	for(var i = 0; i < rows_list.length; i++)
 		if (rows_list[i].id == id) active_row = rows_list[i];
+	if(active_row == null) return;
 	var rows = weapon_info.getElementsByTagName("tr");
 	for (var i = 0; i < rows.length; i++) {
 		rows[i].classList.remove("active-row");
@@ -187,10 +190,13 @@ function showMoreInfo(event) {
 		top: 0,
 		behavior: "smooth"
 	});
+	window.location.hash = WEAPON_TYPE + (active_row != null ? "&w="+encodeURIComponent(active_row.id) : "");
 }
 function hideInfo(){
 	document.getElementById("overlay").style.display = "none";
 	document.getElementById("materials-table").style.display = "none";
+	window.location.hash = WEAPON_TYPE;
+	anchor_weapon = "";
 }
 
 function loadData() {
@@ -642,8 +648,8 @@ function addSearch(){
 	filter_row.id = "search_row";
 }
 
-function init(){
-	var selection_list = ["GS", "LS", "SnS", "DB", "Hammer", "HH", "Lance", "GL", "SA", "LBG", "HBG", "Bow"];
+function main(){
+	
 	sorting = Array(getHeaders().length).fill(0);
 	fully_upgraded = 0;
 	rows_list = [];
@@ -708,47 +714,38 @@ function init(){
 	window.location.hash = WEAPON_TYPE;
 }
 
-displayNavmenu("database");
-//----------------------------------------------------------------------------------------------------
-//-----WEAPON TYPE------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-switch(window.location.hash.substring(1)){
-	case "Bow":
-		changeWeapon("Bow");
-		break;
-	case "DB":
-		changeWeapon("DB");
-		break;
-	case "GL":
-		changeWeapon("GL");
-		break;
-	case "GS":
-		changeWeapon("GS");
-		break;
-	case "Hammer":
-		changeWeapon("Hammer");
-		break;
-	case "HBG":
-		changeWeapon("HBG");
-		break;
-	case "HH":
-		changeWeapon("HH");
-		break;
-	case "Lance":
-		changeWeapon("Lance");
-		break;
-	case "LBG":
-		changeWeapon("LBG");
-		break;
-	case "LS":
-		changeWeapon("LS");
-		break;
-	case "SA":
-		changeWeapon("SA");
-		break;
-	case "SnS":
-		changeWeapon("SnS");
-		break;
-	default:
-		changeWeapon("GS");
+function hash(){
+	var a = document.createElement("a");
+	a.style.display = "none";
+	a.id = anchor_weapon;
+	function handleClick(event) {
+		a.removeEventListener("click", handleClick);
+		a.remove();
+		showMoreInfo(event);
+	}
+	a.addEventListener("click", handleClick);
+	document.body.appendChild(a);
+	a.click();
 }
+
+function init(){
+	var anchor = window.location.hash.substring(1).split("&w=");
+	if(anchor[1] != null) anchor_weapon = decodeURIComponent(anchor[1]);
+	if(selection_list.includes(anchor[0])) changeWeapon(anchor[0]);
+	else changeWeapon("GS");
+}
+
+displayNavmenu("database");
+init();
+hash();
+
+window.addEventListener(
+  "hashchange",
+  () => {
+    if(window.location.hash.substring(1).split("&w=")[1] != null){
+	    if(window.location.hash.substring(1).split("&w=")[0] != WEAPON_TYPE) init();
+	    hash();
+    }
+  },
+  false,
+);
