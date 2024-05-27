@@ -101,7 +101,10 @@
 		<div id="materials-table" class="materials-table" style="display: none">
 			<table id="materials_info">
 				<tr>
-					<th colspan="2" id="close-info" class ="close" onClick="hideInfo()" style="border-bottom: 1px solid #C0C0C0">Info <span style="font-size: 20px">&times;</span></th>
+					<th colspan="2" id="close-info" class ="close" style="border-bottom: 1px solid #C0C0C0">
+						<span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)"onClick="hideInfo()">Info <span style="font-size: 20px" class="copy">&times;</span></span>
+						<span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%)"><span id="copied" style="font-size: 8px; color: #c0c0c0">Copied!&nbsp;</span><span class="copy fa fa-copy" onClick="copyLink()"></span></span>
+					</th>
 				</tr>
 				<tr>
 					<th colspan="2" id="weapon_title"></th>

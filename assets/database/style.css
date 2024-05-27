@@ -266,6 +266,19 @@ body{
 	max-height: 99%;
 }
 
+.copy:hover{
+	color: #c0c0c0;
+}
+
+#copied{
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+#copied.fade{
+	opacity: 1;
+}
+
 .mat-box th, .mat-box td{
 	cursor: default;
 	vertical-align: center;

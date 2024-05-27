@@ -95,6 +95,38 @@ function getSprite(material){
 	return "";
 }
 
+function copyLink() {
+    var url = window.location.href;
+    if(navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+            showCopiedMessage();
+        }).catch(function(err) {
+            console.error('Failed to copy URL. Please try again.');
+        });
+    } else {
+        //Older browsers
+        var textArea = document.createElement("textarea");
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            showCopiedMessage();
+        } catch (err) {
+            console.error('Failed to copy URL. Please try again.');
+        }
+        document.body.removeChild(textArea);
+    }
+}
+
+function showCopiedMessage() {
+	var copied = document.getElementById("copied");
+	copied.classList.toggle("fade");
+	setTimeout(function() {
+		copied.classList.toggle("fade");
+	}, 2000);
+}
+
 function showMoreInfo(event) {
 	var id = event.currentTarget.id;
 	for(var i = 0; i < rows_list.length; i++)
