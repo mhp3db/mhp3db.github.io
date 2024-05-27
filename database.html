@@ -102,9 +102,15 @@
 			<table id="materials_info">
 				<tr>
 					<th colspan="2" id="close-info" class ="close" style="border-bottom: 1px solid #C0C0C0">
-						<span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)"onClick="hideInfo()">Info <span style="font-size: 20px" class="copy">&times;</span></span>
-						<span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%)"><span id="copied" style="font-size: 8px; color: #c0c0c0">Copied!&nbsp;</span><span class="copy fa fa-copy" onClick="copyLink()"></span></span>
-					</th>
+						<div style="position: relative; display: flex; align-items: center; justify-content: space-between; height: 100%; cursor: default">
+						    <span style="position: relative; left: 10px;">
+							   <span style="cursor: pointer" class="copy fa fa-copy" onClick="copyLink()"></span>
+							   <span id="copied" style="position: absolute; top: 50%; transform: translateY(-50%); font-size: 8px; color: #c0c0c0">&nbsp;Copied!</span>
+						    </span>
+						    <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)">Info</span>
+						    <span style="font-size: 20px; position: absolute; right: 10px; cursor: pointer" onClick="hideInfo()" class="copy">&times;</span>
+						</div>
+
 				</tr>
 				<tr>
 					<th colspan="2" id="weapon_title"></th>
