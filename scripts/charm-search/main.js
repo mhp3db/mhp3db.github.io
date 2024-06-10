@@ -95,6 +95,7 @@ function search(){
 			case "ge": var cdt_2 = (getSkill(item["Skill 2"])[1] >= skill_2_num); break;
 			case "g": var cdt_2 = (getSkill(item["Skill 2"])[1] > skill_2_num); break;
 		}
+		if(skill_2 === "") cdt_2 = 1;
 		return(
 			(rarity === "Any" || item["Charm Name"] === rarity) &&
 			(skill_1_name === "Any" || ((getSkill(item["Skill 1"])[0] === skill_1_name) && cdt_1)) &&
@@ -105,7 +106,6 @@ function search(){
 			(search_filter === "" || item["Skill 1"].toLowerCase().includes(search_filter.toLowerCase()) || item["Skill 2"].toLowerCase().includes(search_filter.toLowerCase()))
 		);
 	});
-
 
 	var sorting_header = [];
 	for(var i = 0; i < Math.min(result.length, max_results); i++){
