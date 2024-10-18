@@ -16,7 +16,7 @@ function closeSidenav(){
 	document.getElementById("sidenav").style.visibility = "hidden";
 }
 
-window.addEventListener("load", () => {
+function initNavbar(){
 	var page = window.location.pathname.split("/").pop();
 	var navbar = document.getElementById("navbar");
 	navbar.innerHTML = `
@@ -35,4 +35,6 @@ window.addEventListener("load", () => {
 			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">${title}</span>`;
 		}
 	}	
-});
+}
+
+initNavbar();
