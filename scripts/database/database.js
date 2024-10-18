@@ -766,8 +766,6 @@ function init(){
 	if(selection_list.includes(anchor[0])) changeWeapon(anchor[0]);
 	else changeWeapon("GS");
 }
-
-displayNavmenu("database");
 init();
 hash();
 

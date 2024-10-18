@@ -1,12 +1,23 @@
+var pages = {
+		"Home": "index.html",
+		"Weapon Database": "database.html",
+		"Effective Raw Calculator": "damage-calculator.html",
+		"Charm Lookup": "charm-search.html",
+		"Kelbi Horn Reward Tables": "kelbi-horn.html"
+};
+
 function openSidenav(){
+	document.getElementById("sidenav").style.visibility = "visible";
 	document.getElementById("sidenav").style.width = "100vw";
 }
 
 function closeSidenav(){
 	document.getElementById("sidenav").style.width = "0";
+	document.getElementById("sidenav").style.visibility = "hidden";
 }
 
-function displayNavmenu(page){
+window.addEventListener("load", () => {
+	var page = window.location.pathname.split("/").pop();
 	var navbar = document.getElementById("navbar");
 	navbar.innerHTML = `
 		<button type="button" onClick="openSidenav()">
@@ -17,37 +28,11 @@ function displayNavmenu(page){
 	`;
 	
 	var sidenav = document.getElementById("sidenav");
-	sidenav.innerHTML = `
-		<span onClick="closeSidenav()">&times;</span>
-		<img class="logo" src="assets/logo.png">
-	`;
-	
-	sidenav.innerHTML += `<a href="index.html">Home</a>`;
-	sidenav.innerHTML += `<a href="database.html">Weapon Database</a>`;
-	sidenav.innerHTML += `<a href="damage-calculator.html">Damage Calculator</a>`;
-	sidenav.innerHTML += `<a href="charm-search.html">Charm Lookup</a>`;
-	sidenav.innerHTML += `<a href="kelbi-horn.html">Kelbi Horn Reward Tables</a>`;
-	
-	switch(page){
-		case "index":
-			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Home</span>`;
-			break;
-		case "database":
-			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Weapon Database</span>`;
-			break;
-		case "damage-calculator":
-			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Damage Calculator</span>`;
-			break;
-		case "charm-search":
-			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Charm Lookup</span>`;
-			break;
-		case "kelbi-horn":
-			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">Kelbi Horn Reward Tables</span>`;
-			break;
-	}
-	
-	document.getElementById("footer").innerHTML = `
-		<div class="footer"><a href="https://github.com/SilverJolteon">©2024 SilverJolteon</a></div>
-	`;
-	
-}
+	sidenav.innerHTML = `<span onClick="closeSidenav()">&times;</span><img class="logo" src="assets/logo.png">`;
+	for(title in pages){
+		sidenav.innerHTML += `<a href="${pages[title]}">${title}</a>`;
+		if(page === pages[title]){
+			navbar.innerHTML += `<span onClick="openSidenav()" style="cursor: pointer">${title}</span>`;
+		}
+	}	
+});

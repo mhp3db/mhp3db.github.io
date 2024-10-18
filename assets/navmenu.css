@@ -8,6 +8,8 @@
 	align-items: center;
 	color: white;
 	background-color: #2A2A2A;
+	border-top: solid 1px goldenrod;
+	border-bottom: solid 1px goldenrod;
 }
 
 .navbar button{
@@ -64,11 +66,12 @@
 	top: 0;
 	left: 0;
 	background-color: #202020;
-	border-bottom: 4px solid #202020;
+	border-right: 1px solid goldenrod;
 	overflow: hidden;
 	transition: 400ms;
 	padding-top: 60px;
 	white-space: nowrap;
+	visibility: hidden;
 }
 
 .sidenav a{
@@ -101,20 +104,27 @@
 	padding-bottom: 25px;
 }
 
-.footer-block{
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-}
-
 .footer{
-	padding: 10px 10px;
-}
-
-.footer a{
-	color: #6A6A6A;
-	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 32px;
+	color: #959396;
+	background-color: #2A2A2A;
 	font-size: 12px;
+	border-top: 1px solid goldenrod;
+}
+.footer a{
+	color: #959396;
+	text-decoration: none;
+}
+.footer a:visited{
+	text-decoration: none;
+	color: inherit;
 }
 
 @media only screen and (max-width: 600px){
