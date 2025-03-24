@@ -21,6 +21,7 @@ body{
 	flex-direction: column;
 	width: 70%;
 	margin: auto;
+	max-height: calc(100vh - 99px);
 }
 
 .main-charm{
@@ -40,21 +41,21 @@ body{
 .weapon-table{
 	overflow-y: scroll;
 	scrollbar-gutter: stable;
-	max-height: calc(60vh - 10px);
+	/*max-height: calc(60vh - 68px);*/
 }
-
+/*
 .table-view-full{
-	max-height: calc(60vh + 175px);
+	max-height: calc(60vh + 117px);
 }
 
 .table-view-2row{
-	max-height: calc(60vh + 64px);
+	max-height: calc(60vh + 6px);
 }
 
 .table-view-3row{
-	max-height: calc(60vh + 27px);
+	max-height: calc(60vh - 31px);
 }
-
+*/
 .weapon-table table{
 	border-spacing: 0px;
 	width: 100%;
@@ -322,7 +323,7 @@ body{
 		width: 100%;
 		left: 0;
 	}
-
+	
 	.weapon-table{
 		max-height: calc(50vh - 60px);
 	}
@@ -332,7 +333,7 @@ body{
 	}
 	
 	.table-view-full{
-		max-height: calc(50vh + 125px);
+		max-height: calc(50vh + 115px);
 	}
 	
 	.table-view-2row{
