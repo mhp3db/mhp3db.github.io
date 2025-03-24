@@ -29,6 +29,7 @@ body{
 	flex-direction: column;
 	width: 40%;
 	margin: auto;
+	max-height: calc(100vh - 99px);
 }
 
 .selection{
