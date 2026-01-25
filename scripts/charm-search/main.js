@@ -104,7 +104,8 @@ function search(){
             (slots === "Any" || item["Charm Slot"] === slots) &&
             (table === "Any" || item["Table No."] === table) &&
             (getSkill(item["Skill 1"])[0] !== getSkill(item["Skill 2"])[0]) &&
-            (search_filter === "" || item["Skill 1"].toLowerCase().includes(search_filter.toLowerCase()) || item["Skill 2"].toLowerCase().includes(search_filter.toLowerCase()))
+            (search_filter === "" || search_filter.toLowerCase().split(",").map(s => s.trim()).filter(Boolean).every(filter => item["Skill 1"].toLowerCase().includes(filter) || item["Skill 2"].toLowerCase().includes(filter))
+)
         );
     });
     
