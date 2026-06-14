@@ -143,7 +143,7 @@ body{
 
 .filters-table th, td{
 	text-align: center;
-	vertical-align: center;
+	vertical-align: middle;
 	font-size: 12px;
 }
 
@@ -283,7 +283,7 @@ body{
 
 .mat-box th, .mat-box td{
 	cursor: default;
-	vertical-align: center;
+	vertical-align: middle;
 	height: 16px;
 	text-align: center;
 }
