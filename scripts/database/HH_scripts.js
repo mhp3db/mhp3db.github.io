@@ -42,7 +42,7 @@ function HH_showMoreInfo(event){
 	for(var e in songs){
 	var song = "";
 	for(var i = 0; i < e.length; i++) song += `<img src="assets/database/notes/note_${e[i]}.png">`
-		table += `<tr><td><span style="display: inline-block; text-align: left; width:44px; border: 1px;">${song}</span></td></div><td>${songs[e]}</td></tr>`;
+		table += `<tr style="cursor: default"><td><span style="display: inline-block; text-align: left; width:44px; border: 1px;">${song}</span></td></div><td>${songs[e]}</td></tr>`;
 	}
 	table += "</tbody></table>";
 	document.getElementById("horn_melodies_header").innerHTML = `
