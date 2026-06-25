@@ -123,7 +123,7 @@
 <div class="cell"><div class = "dropdown">
 	<label class="skillname">Sharpness: </label>
 	<select onChange="calculate()" class = "dropdown-content" id = "sharpness_0">
-		<option value = "1.00" selected>---</option>
+		<option value = "0.00" selected>---</option>
 		<option value = "0.50">Red</option>
 		<option value = "0.75">Orange</option>
 		<option value = "1.00">Yellow</option>
@@ -178,17 +178,17 @@
 <div class="cell"><div class = "dropdown">
 	<label class="skillname">Element Atk +1</label>
 	<select onChange="calculate()" class = "dropdown-content" id = "element_atk_up_0">
-		<option value = "0" selected>---</option>
-		<option value = "3">✓</option>
+		<option value = "1.0" selected>---</option>
+		<option value = "1.1">✓</option>
 	</select>
 </div></div>
 
 <div class="cell"><div class = "dropdown">
 	<label class="skillname">[Element] Atk </label>
 	<select onChange="calculate()" class = "dropdown-content" id = "element_attack_0">
-		<option value = "0" selected>---</option>
-		<option value = "3">+1</option>
-		<option value = "6">+2</option>
+		<option value = "1.0" selected>---</option>
+		<option value = "1.1">+1</option>
+		<option value = "1.2">+2</option>
 	</select>
 </div></div>
 
@@ -300,7 +300,6 @@
 <div id="footer" class="footer"></div>
 </div>
 <script src="scripts/navmenu.js"></script>
-<script>displayNavmenu("damage-calculator");</script>
 <script src="scripts/damage-calculator/main.js"></script>
 </body>
 </html>

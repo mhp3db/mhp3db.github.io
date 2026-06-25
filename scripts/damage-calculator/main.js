@@ -32,8 +32,8 @@ function calculate(){
 	var attack_up_0 = parseInt(document.getElementById("attack_up_0").value);
 	var critical_eye_0 = parseInt(document.getElementById("critical_eye_0").value);
 	var weakness_exploit_0 = parseInt(document.getElementById("weakness_exploit_0").value);
-	var element_atk_up_0 = parseInt(document.getElementById("element_atk_up_0").value);
-	var element_attack_0 = parseInt(document.getElementById("element_attack_0").value);
+	var element_atk_up_0 = parseFloat(document.getElementById("element_atk_up_0").value);
+	var element_attack_0 = parseFloat(document.getElementById("element_attack_0").value);
 	
 	var normal_rapid_up_0 = parseFloat(document.getElementById("normal_rapid_up_0").value);
 	var pierce_pierce_up_0 = parseFloat(document.getElementById("pierce_pierce_up_0").value);
@@ -48,7 +48,7 @@ function calculate(){
 	var felyne_booster_0 = parseFloat(document.getElementById("felyne_booster_0").value);
 	
 	var attack_boost_0 = attack_up_0 + powercharm_0 + powertalon_0 + felyne_atk_up_0 + felyne_booster_0;
-	var effective_element_0 = c_element_sharpness(sharpness_0)*(element_0 + element_atk_up_0 + element_attack_0)*elemental_phial_0;
+	var effective_element_0 = c_element_sharpness(sharpness_0)*element_0*element_atk_up_0*element_attack_0*elemental_phial_0;
 	if(element_0 == 0) effective_element_0 = 0;
 	var total_affinity_0 = base_affinity_0 + critical_eye_0 + weakness_exploit_0;
 
