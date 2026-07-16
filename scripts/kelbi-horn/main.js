@@ -1,15 +1,16 @@
 function openHelp(page){
-	var pages = 5;
+	var pages = 6;
 	var tutorial = document.getElementById("tutorial");
 	tutorial.innerHTML = "";
 	if(page > 0) tutorial.innerHTML += `<button class="arrow" style="left: 0px;" onclick="openHelp(${page-1})"><span class="left-arrow">&#9664;</span></button>`;
 	if(page < pages-1) tutorial.innerHTML += `<button class="arrow" style="right: 0px;" onclick="openHelp(${page+1})"> &#9654;</button>`;
 	tutorial.innerHTML += `<div style="font-size: 16px; color: #ffffff; text-align: center;">How to use</div>`;
-	if(page == 0) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">1) Put some Kelbi Horns in your item bag and save at your bed.</div>`;
-	if(page == 1) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">2) Talk to the Village Chief.</div>`;
-	if(page == 2) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">3) Accept the quest "Prescription Pick-Up".</div>`;
-	if(page == 3) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">4) Turn in Kelbi Horns and check rewards."</div>`;
-	if(page == 4) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">5) Enter rewards into online tool and view results. Reset the game if not in your desired table."</div>`;
+	if(page == 0) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">1) Put some Kelbi Horns in your item bag and save at your bed. Then close the game.</div>`;
+	if(page == 1) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">2) When your system's clock's seconds match one of the times from the table, launch the game.</div>`;
+	if(page == 2) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">3) Talk to the Village Chief.</div>`;
+	if(page == 3) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">4) Accept the quest "Prescription Pick-Up".</div>`;
+	if(page == 4) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">5) Turn in Kelbi Horns and check rewards.</div>`;
+	if(page == 5) tutorial.innerHTML += `<div style="font-size: 12px; text-align: center;">6) Enter rewards into online tool and view results. Reset the game if not in your desired table.</div>`;
 	tutorial.innerHTML += `<div class="tutorial-image"><img src="assets/rewards/tutorial/Step_${page}.png"></div>`;
 	tutorial.innerHTML += `<div class="tutorial-page-num">${page+1} / ${pages}</div>`;
 	
@@ -78,16 +79,28 @@ function search(){
 	if(result.length == 0) document.getElementById("results").innerHTML = "No results found";
 	else{
 		var trimmed_results = [];
-		for(var i = 0; i < result.length; i++) if(!trimmed_results.includes(result[i]["Table"])) trimmed_results.push(result[i]["Table"]);
+		var times = [];
+		for(var i = 0; i < result.length; i++){
+			if(!trimmed_results.includes(result[i]["Table"])) trimmed_results.push(result[i]["Table"]);
+			times.push([result[i]["Table"], result[i]["Seconds"]]);
+		}
 		for(var i = 0; i < trimmed_results.length; i++){
-			var res = "Table " + String(trimmed_results[i]);
+			var matched_table = trimmed_results[i];
+			var matched_times = [];
+			
+			for(var j = 0; j < times.length; j++){
+				if(matched_table == times[j][0]){
+					var seconds = String(times[j][1]).padStart(2, '0');
+					matched_times.push("0:" + seconds);
+				}
+			}
+			
+			var res = "Table " + String(trimmed_results[i]).padStart(2, '0') + " [" + matched_times.join(", ") + "]";
 			var txt = document.getElementById("results");
 			txt.innerHTML += res;
 			if(i < trimmed_results.length-1) txt.innerHTML += "<div style='height: 10px'></div>"
 		}
 	}
-	
-	show_results();
 }
 
 function toggle_list(id){
@@ -219,10 +232,38 @@ function reset(){
         }
     }
 
-    hide_results();
+    showTimes();
+}
+
+function showTimes(){
+	document.getElementById("results").innerHTML = "";
+	var times = [];
+	for(var e of data){
+		times.push([e["Table"], e["Seconds"]]);
+	}
+	
+	for(var i = 1; i <= 12; i++){		
+		var formatted_times = [];
+		for(var j = 0; j < times.length; j++){
+			if(times[j][0] == i){
+				var seconds = String(times[j][1]).padStart(2, '0');
+				formatted_times.push("0:" + seconds);
+			}
+		}
+		
+		var res = "Table " + String(i).padStart(2, '0') + " [" + formatted_times.join(", ") + "]";
+		var txt = document.getElementById("results");
+		txt.innerHTML += res;
+		if(i < 12) txt.innerHTML += "<div style='height: 10px'></div>"
+	}
+
+	
+	show_results();
 }
 
 window.onload=function(){
 	update();
 	get_data();
+	showTimes();
+	show_results();
 }

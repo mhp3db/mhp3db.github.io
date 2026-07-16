@@ -10,7 +10,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "56"
     },
     {
         "Table": "1",
@@ -23,7 +24,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "16"
     },
     {
         "Table": "1",
@@ -36,7 +38,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "2"
     },
     {
         "Table": "1",
@@ -49,7 +52,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "57"
     },
     {
         "Table": "1",
@@ -62,7 +66,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "7"
     },
     {
         "Table": "1",
@@ -75,7 +80,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "50"
     },
     {
         "Table": "1",
@@ -88,7 +94,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "41"
     },
     {
         "Table": "1",
@@ -101,20 +108,8 @@ const data = [
         "Reward 7": "Nulberry x3",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "---",
-        "Reward 10": "---"
-    },
-    {
-        "Table": "1",
-        "Reward 1": "Raw Meat x1",
-        "Reward 2": "Raw Meat x1",
-        "Reward 3": "Raw Meat x1",
-        "Reward 4": "Health Horn x1",
-        "Reward 5": "Nulberry x3",
-        "Reward 6": "Nulberry x3",
-        "Reward 7": "Warm Pelt x1",
-        "Reward 8": "Warm Pelt x1",
-        "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "---",
+        "Seconds": "45"
     },
     {
         "Table": "1",
@@ -127,7 +122,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Kelbi Horn x1",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "44"
     },
     {
         "Table": "2",
@@ -140,7 +136,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "40"
     },
     {
         "Table": "2",
@@ -153,7 +150,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "36"
     },
     {
         "Table": "2",
@@ -166,7 +164,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "58"
     },
     {
         "Table": "2",
@@ -179,7 +178,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "5"
     },
     {
         "Table": "3",
@@ -192,7 +192,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Kelbi Horn x1",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "10"
     },
     {
         "Table": "3",
@@ -205,7 +206,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "47"
     },
     {
         "Table": "3",
@@ -218,7 +220,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "9"
     },
     {
         "Table": "3",
@@ -231,7 +234,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "35"
     },
     {
         "Table": "4",
@@ -244,7 +248,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "54"
     },
     {
         "Table": "4",
@@ -257,7 +262,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "46"
     },
     {
         "Table": "4",
@@ -270,7 +276,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "26"
     },
     {
         "Table": "4",
@@ -283,7 +290,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "34"
     },
     {
         "Table": "5",
@@ -296,7 +304,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "6"
     },
     {
         "Table": "5",
@@ -309,7 +318,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "48"
     },
     {
         "Table": "5",
@@ -322,7 +332,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "21"
     },
     {
         "Table": "5",
@@ -335,7 +346,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "37"
     },
     {
         "Table": "6",
@@ -348,7 +360,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "32"
     },
     {
         "Table": "6",
@@ -361,7 +374,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "14"
     },
     {
         "Table": "6",
@@ -374,7 +388,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "4"
     },
     {
         "Table": "6",
@@ -387,7 +402,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "39"
     },
     {
         "Table": "6",
@@ -400,7 +416,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "51"
     },
     {
         "Table": "6",
@@ -413,7 +430,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "11"
     },
     {
         "Table": "6",
@@ -426,7 +444,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "49"
     },
     {
         "Table": "7",
@@ -439,7 +458,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "31"
     },
     {
         "Table": "7",
@@ -452,7 +472,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "53"
     },
     {
         "Table": "7",
@@ -465,7 +486,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "27"
     },
     {
         "Table": "7",
@@ -478,7 +500,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Kelbi Horn x1",
         "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "59"
     },
     {
         "Table": "7",
@@ -491,7 +514,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "13"
     },
     {
         "Table": "7",
@@ -504,7 +528,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "17"
     },
     {
         "Table": "7",
@@ -517,7 +542,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "30"
     },
     {
         "Table": "7",
@@ -530,7 +556,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "23"
     },
     {
         "Table": "7",
@@ -543,7 +570,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "38"
     },
     {
         "Table": "8",
@@ -556,7 +584,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "29"
     },
     {
         "Table": "8",
@@ -569,7 +598,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "43"
     },
     {
         "Table": "8",
@@ -582,7 +612,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "20"
     },
     {
         "Table": "8",
@@ -595,7 +626,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "18"
     },
     {
         "Table": "8",
@@ -608,7 +640,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "55"
     },
     {
         "Table": "9",
@@ -621,7 +654,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "52"
     },
     {
         "Table": "9",
@@ -634,7 +668,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "19"
     },
     {
         "Table": "9",
@@ -647,7 +682,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "Warm Pelt x2",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "15"
     },
     {
         "Table": "10",
@@ -660,7 +696,22 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "0"
+    },
+    {
+        "Table": "10",
+        "Reward 1": "Field Horn x1",
+        "Reward 2": "Nulberry x3",
+        "Reward 3": "Nulberry x3",
+        "Reward 4": "Kelbi Horn x1",
+        "Reward 5": "Kelbi Horn x1",
+        "Reward 6": "Kelbi Horn x1",
+        "Reward 7": "Warm Pelt x2",
+        "Reward 8": "---",
+        "Reward 9": "---",
+        "Reward 10": "---",
+        "Seconds": "1"
     },
     {
         "Table": "10",
@@ -673,7 +724,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "22"
     },
     {
         "Table": "10",
@@ -686,7 +738,8 @@ const data = [
         "Reward 7": "---",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "8"
     },
     {
         "Table": "10",
@@ -699,7 +752,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Kelbi Horn x1",
         "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "25"
     },
     {
         "Table": "10",
@@ -712,7 +766,8 @@ const data = [
         "Reward 7": "Nulberry x3",
         "Reward 8": "Nulberry x3",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "28"
     },
     {
         "Table": "11",
@@ -725,7 +780,8 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "42"
     },
     {
         "Table": "11",
@@ -738,7 +794,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "12"
     },
     {
         "Table": "11",
@@ -751,7 +808,8 @@ const data = [
         "Reward 7": "Warm Pelt x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x2",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "33"
     },
     {
         "Table": "12",
@@ -764,7 +822,8 @@ const data = [
         "Reward 7": "Kelbi Horn x1",
         "Reward 8": "Warm Pelt x1",
         "Reward 9": "Warm Pelt x1",
-        "Reward 10": "Warm Pelt x2"
+        "Reward 10": "Warm Pelt x2",
+        "Seconds": "24"
     },
     {
         "Table": "12",
@@ -777,6 +836,7 @@ const data = [
         "Reward 7": "Warm Pelt x2",
         "Reward 8": "---",
         "Reward 9": "---",
-        "Reward 10": "---"
+        "Reward 10": "---",
+        "Seconds": "3"
     }
 ]

@@ -91,6 +91,17 @@ td:hover{
 	background-color: #4b2d0c;
 }
 
+.results{
+	background-color: #361d18;
+	border: 4px solid #1b0f0f;
+	border-radius: 15px;
+	color: #FFFFFF;
+	padding: 10px;
+	font-family: 'Rodin';
+	font-size: 12px;
+	text-align: left;
+}
+
 .row0{top: 48px;}
 .row1{top: 128px;}
 .col0{left: 84px;}
@@ -328,6 +339,10 @@ td:hover{
 		top: 0.42vw;
 	}
 	
+	.results{
+		font-size: 8px;
+	}
+	
 	.row0{top: 5vw;}
 	.row1{top: 13.333vw;}
 	.col0{left: 8.75vw;}
@@ -349,11 +364,7 @@ td:hover{
 
 </div>
 <div id="results-block" style="display: none">
-	<table><tr><td>
-		<div class="dropdown">
-			<div id="results" style="margin: 10px auto;"></div>
-		</div>
-	</td></tr></table>
+	<div id="results" class="results"></div>
 </div>
 <div id="help-window" class="help-window">
 	<span class="close-help-button" onclick="closeHelp()">&times;</span>
@@ -369,10 +380,6 @@ td:hover{
 <script>
 function show_results(){
 	document.getElementById("results-block").style.display = "table-cell";
-}
-
-function hide_results(){
-	document.getElementById("results-block").style.display = "none";
 }
 </script> 
 </body>
