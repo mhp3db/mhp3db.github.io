@@ -243,12 +243,22 @@ function showTimes(){
 	}
 	
 	for(var i = 1; i <= 12; i++){		
-		var formatted_times = [];
+		var seconds = [];
+		
+		
 		for(var j = 0; j < times.length; j++){
 			if(times[j][0] == i){
-				var seconds = String(times[j][1]).padStart(2, '0');
-				formatted_times.push("0:" + seconds);
+				seconds.push(times[j][1]);
 			}
+		}
+		
+		seconds.sort(function(a, b){
+			return a - b;
+		});
+		
+		var formatted_times = [];
+		for(var sec of seconds){
+			formatted_times.push("0:" + String(sec).padStart(2, '0'));
 		}
 		
 		var res = "Table " + String(i).padStart(2, '0') + " [" + formatted_times.join(", ") + "]";
