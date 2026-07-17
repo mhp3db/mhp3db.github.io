@@ -45,6 +45,15 @@
 	border-radius: 8px;
 }
 
+.timelink{
+	cursor: pointer;
+	color: #D0D0D0;
+}
+
+.timelink:hover{
+	color: #F0F0F0;
+}
+
 .list-visible{
 	display: flex;
 }
@@ -91,6 +100,10 @@ td:hover{
 	background-color: #4b2d0c;
 }
 
+input { 
+    text-align: center; 
+}
+
 .results{
 	background-color: #361d18;
 	border: 4px solid #1b0f0f;
@@ -112,6 +125,28 @@ td:hover{
 .col5{left: 604px;}
 .col6{left: 708px;}
 .col7{left: 812px;}
+
+.delay{
+	position: absolute;
+	width: 80px;
+	height: 76px;
+	top: 120px;
+	left: 604px;
+	background-color: #361d18;
+	border: 4px solid #1b0f0f;
+	border-radius: 16px;
+	font-family: 'Rodin';
+	color: #FFFFFF;
+}
+
+.delay-value{
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: 4px;
+	border: 1px solid #1b0f0f;
+	background-color: #4f2a23;
+}
 
 .help{
 	position: absolute;
@@ -285,6 +320,24 @@ td:hover{
 		margin-top: 5vw;
 	}
 	
+	.delay{
+		width: 8.333vw;
+		height: 7.917vw;
+		top: 12.5vw;
+		left: 62.917vw;
+		transform: unset;
+		border: 0.417vw solid #1b0f0f;
+		border-radius: 5px;
+		font-size: 1.5vw;
+	}
+	
+	.delay-value{
+		left: 2px;
+		right: 2px;
+		bottom: -1px;
+		font-size: 1.5vw;
+	}
+	
 	.help{
 		width: 8.333vw;
 		height: 7.917vw;
@@ -363,7 +416,7 @@ td:hover{
 
 
 </div>
-<div id="results-block" style="display: none">
+<div id="results-block" style="display: table-cell">
 	<div id="results" class="results"></div>
 </div>
 <div id="help-window" class="help-window">
@@ -377,10 +430,5 @@ td:hover{
 <script src="scripts/navmenu.js"></script>
 <script src="scripts/kelbi-horn/rewards.js"></script>
 <script src="scripts/kelbi-horn/main.js"></script>
-<script>
-function show_results(){
-	document.getElementById("results-block").style.display = "table-cell";
-}
-</script> 
 </body>
 </html>

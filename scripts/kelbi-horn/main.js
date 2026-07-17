@@ -61,6 +61,7 @@ function get_data(){
 }
 
 function search(){
+	var delay = parseInt(document.getElementById("delay").value);
 	var rewards = [];
 	for(var i = 0; i < 10; i++) rewards[i] = document.getElementById("slot_" + i).value;
 	var result = data.filter(item => 
@@ -86,14 +87,27 @@ function search(){
 		}
 		for(var i = 0; i < trimmed_results.length; i++){
 			var matched_table = trimmed_results[i];
-			var matched_times = [];
+			var seconds = [];
 			
 			for(var j = 0; j < times.length; j++){
 				if(matched_table == times[j][0]){
-					var seconds = String(times[j][1]).padStart(2, '0');
-					matched_times.push("0:" + seconds);
+					seconds.push(times[j][1]);
 				}
-			}
+			}	
+			
+			seconds.sort(function(a, b){
+				return a - b;
+			});
+			
+			var matched_times = seconds.map(function(sec){
+				var second = parseInt(sec);
+				var time = second - delay;
+				if(time < 0) time += 60;
+				if(time >= 60) time -= 60;
+				var time = "0:" + String(time).padStart(2, '0');
+				
+				return `<span class="timelink" onclick="fillRewards(${matched_table}, ${second})">${time}</span>`;
+			});	
 			
 			var res = "Table " + String(trimmed_results[i]).padStart(2, '0') + " [" + matched_times.join(", ") + "]";
 			var txt = document.getElementById("results");
@@ -202,6 +216,11 @@ function update(){
 		document.getElementById("reward-table").appendChild(list);	
 	}
 	
+	var delay = document.createElement("button");
+	delay.innerHTML = `Delay<input onChange="search()" class="dropdown-content delay-value" type="text" id="delay" size="2" value="0">`;
+	delay.classList.add("delay");
+	document.getElementById("reward-table").appendChild(delay);
+	
 	var help = document.createElement("button");
 	help.textContent = "Help";
 	help.classList.add("help");
@@ -232,48 +251,31 @@ function reset(){
         }
     }
 
-    showTimes();
+    search();
 }
 
-function showTimes(){
-	document.getElementById("results").innerHTML = "";
-	var times = [];
-	for(var e of data){
-		times.push([e["Table"], e["Seconds"]]);
-	}
-	
-	for(var i = 1; i <= 12; i++){		
-		var seconds = [];
-		
-		
-		for(var j = 0; j < times.length; j++){
-			if(times[j][0] == i){
-				seconds.push(times[j][1]);
-			}
+function fillRewards(table, seconds){
+	var match = data.find(item => item["Table"] == table && item["Seconds"] == seconds);
+	for(var i = 0; i < 10; i++){
+		var slot = match["Reward " + (i + 1)];
+		var dropdown = document.getElementById("slot_" + i);
+		dropdown.value = slot;
+		if(slot == "Any" || !slot){
+			document.getElementById("icon_" + i).src = "assets/rewards/Any.png";
+            document.getElementById("reward_num_" + i).textContent = "0";
 		}
-		
-		seconds.sort(function(a, b){
-			return a - b;
-		});
-		
-		var formatted_times = [];
-		for(var sec of seconds){
-			formatted_times.push("0:" + String(sec).padStart(2, '0'));
+		else{
+			var item = getItem(slot)[0];
+            var count = getItem(slot)[1];
+			document.getElementById("icon_" + i).src = "assets/rewards/" + item + ".png";
+			document.getElementById("reward_num_" + i).textContent = count;
 		}
-		
-		var res = "Table " + String(i).padStart(2, '0') + " [" + formatted_times.join(", ") + "]";
-		var txt = document.getElementById("results");
-		txt.innerHTML += res;
-		if(i < 12) txt.innerHTML += "<div style='height: 10px'></div>"
 	}
-
-	
-	show_results();
+	search();
 }
 
 window.onload=function(){
 	update();
 	get_data();
-	showTimes();
-	show_results();
+	search();
 }
